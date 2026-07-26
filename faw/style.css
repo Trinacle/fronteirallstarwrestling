@@ -1,0 +1,15 @@
+/*
+Theme Name: FAW — Frontier All-Star Wrestling
+Theme URI: https://frontierallstarwrestling.com
+Author: Trinacle
+Author URI: https://trinacle.com
+Description: Custom child theme for Frontier All-Star Wrestling. Dark red cinematic design with coverflow roster, horizontal carousels, and full-bleed event photography. Child of Astra.
+Template: astra
+Version: 1.0.0
+Text Domain: faw
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 7.4
+*/
+
+/* All theme styles live in assets/css/styles.css */

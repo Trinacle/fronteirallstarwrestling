@@ -1,0 +1,40 @@
+name: Deploy FAW Theme
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'faw/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.FAW_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.FAW_SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || true
+
+      - name: Deploy theme via rsync
+        run: |
+          rsync -avz --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='node_modules' \
+            faw/ \
+            ${{ secrets.FAW_SSH_USER }}@${{ secrets.FAW_SSH_HOST }}:~/public_html/website_7ddacff9/wp-content/themes/faw/
+
+      - name: Fix permissions
+        run: |
+          ssh ${{ secrets.FAW_SSH_USER }}@${{ secrets.FAW_SSH_HOST }} \
+            "find ~/public_html/website_7ddacff9/wp-content/themes/faw/ -type d -exec chmod 755 {} \; && \
+             find ~/public_html/website_7ddacff9/wp-content/themes/faw/ -type f -exec chmod 644 {} \;"
+
+      - name: Deployment complete
+        run: echo "Theme deployed to ~/public_html/website_7ddacff9/wp-content/themes/faw/"
