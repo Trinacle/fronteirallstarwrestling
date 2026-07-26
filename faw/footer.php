@@ -24,8 +24,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
     <div class="footer__main">
         <div class="footer__brand">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo logo--footer">
-                <span class="logo__shield"><svg viewBox="0 0 60 60" class="logo__svg" aria-hidden="true"><path d="M12 18 L30 44 L48 18" stroke="currentColor" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                <span class="logo__text"><strong>FRONTIER</strong><small>ALL-STAR WRESTLING</small></span>
+                <picture class="logo__img">
+                    <source srcset="<?php echo esc_url( FAW_URI . '/assets/img/logo-footer.webp' ); ?>" type="image/webp">
+                    <img src="<?php echo esc_url( FAW_URI . '/assets/img/logo-footer.png' ); ?>" alt="Frontier All-Star Wrestling" width="160" height="104">
+                </picture>
             </a>
             <p>Explosive live pro wrestling from Covington, Louisiana — serving the Northshore and beyond.</p>
             <div class="footer__social">

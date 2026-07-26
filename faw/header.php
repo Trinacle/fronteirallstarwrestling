@@ -39,15 +39,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
         </nav>
 
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" aria-label="FAW home">
-            <span class="logo__shield">
-                <svg viewBox="0 0 60 60" class="logo__svg" aria-hidden="true">
-                    <path d="M12 18 L30 44 L48 18" stroke="currentColor" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </span>
-            <span class="logo__text">
-                <strong>FRONTIER</strong>
-                <small>ALL-STAR WRESTLING</small>
-            </span>
+            <picture class="logo__img">
+                <source srcset="<?php echo esc_url( FAW_URI . '/assets/img/logo.webp' ); ?>" type="image/webp">
+                <img src="<?php echo esc_url( FAW_URI . '/assets/img/logo.png' ); ?>" alt="Frontier All-Star Wrestling" width="200" height="130" loading="eager">
+            </picture>
         </a>
 
         <nav class="nav__links nav__links--right" aria-label="Right navigation">
