@@ -114,7 +114,7 @@ get_header();
         <h2 class="section-title">UPCOMING <span class="hl">EVENTS</span></h2>
         <p class="section-sub">Swipe or drag to browse the calendar →</p>
     </div>
-    <div class="h-carousel" id="eventsCarousel">
+    <div class="h-carousel h-carousel--center" id="eventsCarousel">
         <article class="event-card event-card--feature">
             <div class="event-card__photo"><div class="photo-slot photo-event-1 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'gallery/c010-lg.jpg' ); ?>');background-size:cover;background-position:center;"></div><span class="event-card__badge">● LIVE</span></div>
             <div class="event-card__body">
@@ -149,15 +149,6 @@ get_header();
         <div class="partner">HOT HONEY NICKYS</div>
         <div class="partner">MANDES RESTAURANT</div>
         <div class="partner partner--cta">YOUR BRAND HERE</div>
-    </div>
-</section>
-
-<!-- ============ FULL-BLEED ACTION BREAK ============ -->
-<section class="photo-break">
-    <div class="photo-break__bg photo-slot fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'gallery/c050-lg.jpg' ); ?>');background-size:cover;background-position:center;"></div>
-    <div class="photo-break__overlay"></div>
-    <div class="photo-break__content">
-        <h2 class="photo-break__title">THIS IS <span class="hl">FRONTIER.</span></h2>
     </div>
 </section>
 

@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FAW_VERSION', '1.2.1' );
+define( 'FAW_VERSION', '1.3.0' );
 define( 'FAW_DIR', get_stylesheet_directory() );
 define( 'FAW_URI', get_stylesheet_directory_uri() );
 
@@ -226,6 +226,13 @@ function faw_contact_submit() {
         'post_content' => $message,
         'meta_input'   => array( 'faw_email' => $email ),
     ) );
+
+    // Email the submission to FAW inbox
+    $to      = 'info@fronteirallstarwrestling.com';
+    $subject = 'FAW Contact Form — ' . $name;
+    $body    = "Name: $name\nEmail: $email\n\nMessage:\n$message\n";
+    $headers = array( 'Reply-To: ' . $name . ' <' . $email . '>' );
+    wp_mail( $to, $subject, $body, $headers );
 
     wp_send_json_success( array( 'message' => 'Message sent! We\'ll get back to you shortly.' ) );
 }
