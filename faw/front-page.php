@@ -59,28 +59,6 @@ get_header();
                 </div>
             </div>
         </article>
-
-        <article class="slide" style="--accent:#a855f7">
-            <div class="slide__bg slide__bg-c"></div>
-            <div class="slide__photo-frame">
-                <div class="photo-slot photo-hero-3 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'gallery/c045-lg.jpg' ); ?>');background-size:cover;background-position:center;"></div>
-            </div>
-            <div class="slide__overlay"></div>
-            <div class="slide__content">
-                <span class="slide__tag">▸ THE PHENOM</span>
-                <h1 class="slide__title">ENTER<br><span class="slide__title-accent">THE PHANTOM</span></h1>
-                <p class="slide__copy">A masked high-flyer who defies gravity and disappears into the lights. No rope too high, no dive too reckless.</p>
-                <div class="slide__meta">
-                    <div class="slide__meta-item"><span class="slide__meta-k">HEIGHT</span><span class="slide__meta-v">5'10"</span></div>
-                    <div class="slide__meta-item"><span class="slide__meta-k">WEIGHT</span><span class="slide__meta-v">185 lbs</span></div>
-                    <div class="slide__meta-item"><span class="slide__meta-k">FINISHER</span><span class="slide__meta-v">Phantom Drop</span></div>
-                </div>
-                <div class="slide__cta">
-                    <a href="<?php echo esc_url( home_url( '/#roster' ) ); ?>" class="btn btn--primary">Meet the Roster</a>
-                    <a href="<?php echo esc_url( home_url( '/#gallery' ) ); ?>" class="btn btn--ghost">▶ Watch Highlights</a>
-                </div>
-            </div>
-        </article>
     </div>
 
     <button class="hero__arrow hero__arrow--prev" id="heroPrev" aria-label="Previous slide">‹</button>
@@ -155,24 +133,6 @@ get_header();
                 <div class="event-card__foot"><span class="event-card__price">Archive</span><a href="<?php echo esc_url( home_url( '/#gallery' ) ); ?>" class="btn btn--ghost btn--sm">View →</a></div>
             </div>
         </article>
-        <article class="event-card">
-            <div class="event-card__photo"><div class="photo-slot photo-event-3 fade-in-img"><span>EVENT PHOTO</span></div><span class="event-card__badge event-card__badge--soon">◯ COMING</span></div>
-            <div class="event-card__body">
-                <span class="event-card__date">OCT 2026 · DATE TBA</span>
-                <h3>Autumn Annihilation</h3>
-                <p>FAW returns to the Northshore this fall. Card and date to be announced.</p>
-                <div class="event-card__foot"><span class="event-card__price">TBA</span><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" class="btn btn--ghost btn--sm">Notify Me →</a></div>
-            </div>
-        </article>
-        <article class="event-card">
-            <div class="event-card__photo"><div class="photo-slot photo-event-4 fade-in-img"><span>EVENT PHOTO</span></div><span class="event-card__badge event-card__badge--soon">◯ COMING</span></div>
-            <div class="event-card__body">
-                <span class="event-card__date">DEC 2026 · DATE TBA</span>
-                <h3>Frontier Finale</h3>
-                <p>Every title on the line. The biggest show of FAW's inaugural year.</p>
-                <div class="event-card__foot"><span class="event-card__price">TBA</span><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" class="btn btn--ghost btn--sm">Notify Me →</a></div>
-            </div>
-        </article>
     </div>
 </section>
 
@@ -183,11 +143,11 @@ get_header();
         <h2 class="section-title">BACKED BY THE <span class="hl">BEST</span></h2>
     </div>
     <div class="partners__wall">
-        <div class="partner">COVINGTON COUNTRY CLUB</div>
-        <div class="partner">THE DUNGEON BAR</div>
-        <div class="partner">FELIX'S</div>
-        <div class="partner">NORTHSHORE SUPPLY</div>
-        <div class="partner">EVENTBRITE</div>
+        <div class="partner">WA WAGYU</div>
+        <div class="partner">JUSTIN "HITMAN" ARD</div>
+        <div class="partner">BLUNT WRAPS USA</div>
+        <div class="partner">HOT HONEY NICKYS</div>
+        <div class="partner">MANDES RESTAURANT</div>
         <div class="partner partner--cta">YOUR BRAND HERE</div>
     </div>
 </section>
@@ -227,27 +187,26 @@ get_header();
     <div class="section-head">
         <span class="kicker">OFFICIAL GEAR</span>
         <h2 class="section-title">FAW <span class="hl">MERCH</span></h2>
-        <p class="section-sub">Rep the frontier. New drops land at every show and online.</p>
+        <p class="section-sub">Rep the frontier. New drops land at every show.</p>
     </div>
     <div class="merch__grid">
         <article class="merch-card">
-            <div class="merch-card__photo"><div class="photo-slot photo-merch-1 fade-in-img"><span>T-SHIRT</span></div></div>
-            <div class="merch-card__body"><span class="merch-card__cat">APPAREL</span><h3>Kris Keith "Bayou Bomb" Tee</h3><div class="merch-card__foot"><span class="merch-card__price">$28</span><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" class="btn btn--ghost btn--sm">Shop →</a></div></div>
+            <div class="merch-card__photo merch-card__photo--soon"><div class="photo-slot photo-merch-1 fade-in-img"><span>COMING SOON</span></div></div>
+            <div class="merch-card__body"><span class="merch-card__cat">APPAREL</span><h3>T-Shirts</h3><div class="merch-card__foot"><span class="merch-card__price">Coming Soon</span></div></div>
         </article>
         <article class="merch-card">
-            <div class="merch-card__photo"><div class="photo-slot photo-merch-2 fade-in-img"><span>HOODIE</span></div></div>
-            <div class="merch-card__body"><span class="merch-card__cat">APPAREL</span><h3>FAW Territory Hoodie</h3><div class="merch-card__foot"><span class="merch-card__price">$55</span><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" class="btn btn--ghost btn--sm">Shop →</a></div></div>
+            <div class="merch-card__photo merch-card__photo--soon"><div class="photo-slot photo-merch-2 fade-in-img"><span>COMING SOON</span></div></div>
+            <div class="merch-card__body"><span class="merch-card__cat">APPAREL</span><h3>Hoodies</h3><div class="merch-card__foot"><span class="merch-card__price">Coming Soon</span></div></div>
         </article>
         <article class="merch-card">
-            <div class="merch-card__photo"><div class="photo-slot photo-merch-3 fade-in-img"><span>POSTER</span></div></div>
-            <div class="merch-card__body"><span class="merch-card__cat">COLLECTIBLE</span><h3>Crucible Debut Poster</h3><div class="merch-card__foot"><span class="merch-card__price">$20</span><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" class="btn btn--ghost btn--sm">Shop →</a></div></div>
+            <div class="merch-card__photo merch-card__photo--soon"><div class="photo-slot photo-merch-3 fade-in-img"><span>COMING SOON</span></div></div>
+            <div class="merch-card__body"><span class="merch-card__cat">COLLECTIBLE</span><h3>Posters</h3><div class="merch-card__foot"><span class="merch-card__price">Coming Soon</span></div></div>
         </article>
         <article class="merch-card">
-            <div class="merch-card__photo"><div class="photo-slot photo-merch-4 fade-in-img"><span>HAT</span></div></div>
-            <div class="merch-card__body"><span class="merch-card__cat">APPAREL</span><h3>FAW Snapback Cap</h3><div class="merch-card__foot"><span class="merch-card__price">$25</span><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" class="btn btn--ghost btn--sm">Shop →</a></div></div>
+            <div class="merch-card__photo merch-card__photo--soon"><div class="photo-slot photo-merch-4 fade-in-img"><span>COMING SOON</span></div></div>
+            <div class="merch-card__body"><span class="merch-card__cat">APPAREL</span><h3>Headwear</h3><div class="merch-card__foot"><span class="merch-card__price">Coming Soon</span></div></div>
         </article>
     </div>
-    <div class="merch__cta"><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" class="btn btn--primary btn--lg">Shop All Merch →</a></div>
 </section>
 
 <!-- ============ INSTAGRAM FEED ============ -->
