@@ -142,9 +142,9 @@ svg { display: block; }
 .nav__links a:hover { color: var(--text); background: rgba(255,80,110,0.07); }
 .logo { display: inline-flex; align-items: center; gap: 14px; justify-self: center; }
 .logo__img { display: block; line-height: 0; }
-.logo__img img { height: 56px; width: auto; max-width: 200px; object-fit: contain; transition: transform 0.4s var(--ease); }
+.logo__img img { height: 96px; width: auto; max-width: 340px; object-fit: contain; transition: transform 0.4s var(--ease); }
 .logo:hover .logo__img img { transform: scale(1.05); }
-.logo--footer .logo__img img { height: 80px; max-width: 240px; }
+.logo--footer .logo__img img { height: 140px; max-width: 400px; }
 .logo__shield { width: 50px; height: 50px; border-radius: 14px; background: linear-gradient(135deg, var(--crimson), var(--crimson-deep)); display: grid; place-items: center; color: #fff; box-shadow: 0 8px 28px -8px rgba(200,16,48,0.7); transform: rotate(-6deg); transition: transform 0.4s var(--ease); }
 .logo:hover .logo__shield { transform: rotate(6deg) scale(1.06); }
 .logo__svg { width: 30px; height: 30px; }
