@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FAW_VERSION', '1.5.0' );
+define( 'FAW_VERSION', '1.6.0' );
 define( 'FAW_DIR', get_stylesheet_directory() );
 define( 'FAW_URI', get_stylesheet_directory_uri() );
 
@@ -281,7 +281,7 @@ function faw_get_roster() {
     $roster = array(
         array( 'name' => 'Phantom', 'initials' => 'PH', 'role' => 'High Flyer', 'tags' => array( 'flyer' ), 'color' => '#a855f7', 'glow' => 'rgba(168,85,247,0.28)', 'img' => FAW_URI . '/assets/img/phantom.webp', 'height' => "5'10\"", 'weight' => '185 lbs', 'from' => 'Parts Unknown', 'bio' => 'A masked high-flyer who defies gravity and disappears into the lights. No rope too high, no dive too reckless.', 'signature' => 'The Phantom Drop' ),
         array( 'name' => 'Xander Gold', 'initials' => 'XG', 'role' => 'Showman', 'tags' => array( 'flyer', 'technical' ), 'color' => '#ffb020', 'glow' => 'rgba(255,176,32,0.28)', 'img' => FAW_URI . '/assets/img/xander-gold.webp', 'height' => "6'0\"", 'weight' => '210 lbs', 'from' => 'Los Angeles, CA', 'bio' => 'If wrestling is a show, Xander Gold is the headliner. Equal parts athlete and entertainer.', 'signature' => 'The Gold Standard' ),
-        array( 'name' => 'Mustang Mike', 'initials' => 'MM', 'role' => 'High Flyer', 'tags' => array( 'flyer' ), 'color' => '#ff2e4c', 'glow' => 'rgba(255,46,76,0.3)', 'img' => FAW_URI . '/assets/img/mustang-mike.webp', 'height' => "5'9\"", 'weight' => '175 lbs', 'from' => 'Dallas, TX', 'bio' => 'Built like a muscle car and twice as fast. The crowd-favorite underdog with a motor that never quits.', 'signature' => 'The Stampede' ),
+        array( 'name' => 'Mustang Mike', 'initials' => 'MM', 'role' => 'High Flyer', 'tags' => array( 'flyer' ), 'color' => '#8b0a1e', 'glow' => 'rgba(139,10,30,0.3)', 'img' => FAW_URI . '/assets/img/mustang-mike.webp', 'height' => "5'9\"", 'weight' => '175 lbs', 'from' => 'Dallas, TX', 'bio' => 'Built like a muscle car and twice as fast. The crowd-favorite underdog with a motor that never quits.', 'signature' => 'The Stampede' ),
         array( 'name' => 'Kris Keith', 'initials' => 'KK', 'role' => 'Heavyweight Champion', 'tags' => array( 'heavyweight', 'champion' ), 'color' => '#f5c542', 'glow' => 'rgba(245,197,66,0.3)', 'img' => FAW_URI . '/assets/img/kris-keith.webp', 'height' => "6'3\"", 'weight' => '255 lbs', 'from' => 'New Orleans, LA', 'bio' => 'The inaugural FAW Heavyweight Champion. A powerhouse brawler who combines raw strength with surprising agility, Kris Keith battered his way through the Crucible tournament to claim the gold.', 'champion' => 'FAW Heavyweight Champion', 'signature' => 'The Bayou Bomb' ),
         array( 'name' => 'Izaiah Zane', 'initials' => 'IZ', 'role' => 'Technician', 'tags' => array( 'technical' ), 'color' => '#0ea5e9', 'glow' => 'rgba(14,165,233,0.28)', 'img' => FAW_URI . '/assets/img/izaiah-zane.webp', 'height' => "5'11\"", 'weight' => '200 lbs', 'from' => 'Atlanta, GA', 'bio' => 'A mat general who treats every match like a chess game. The quiet assassin of the FAW locker room.', 'signature' => 'Zane Cradle' ),
         array( 'name' => 'Cowboy Cliff Rogers', 'initials' => 'CR', 'role' => 'Brawler', 'tags' => array( 'heavyweight' ), 'color' => '#d97706', 'glow' => 'rgba(217,119,6,0.28)', 'img' => FAW_URI . '/assets/img/cowboy-cliff.webp', 'height' => "6'2\"", 'weight' => '250 lbs', 'from' => 'Houston, TX', 'bio' => 'Country grit and a lariat that turns lights out. At home in a no-DQ scrap as much as a technical affair.', 'signature' => 'Last Call Lariat' ),

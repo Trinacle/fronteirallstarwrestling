@@ -138,7 +138,7 @@ get_header();
     </div>
     <div class="h-carousel h-carousel--center" id="eventsCarousel">
         <article class="event-card event-card--feature">
-            <div class="event-card__photo"><div class="photo-slot photo-event-1 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'rev-hero.jpg' ); ?>');background-size:cover;background-position:center;"></div><span class="event-card__badge">● LIVE</span></div>
+            <div class="event-card__photo event-card__photo--poster"><div class="photo-slot photo-event-1 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'rev-hero.jpg' ); ?>');background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#050103;"></div><span class="event-card__badge">● SELLING FAST</span></div>
             <div class="event-card__body">
                 <span class="event-card__date">SAT · AUG 15 · 2026 · 5:00 PM</span>
                 <h3>Revolution on the River</h3>
@@ -147,12 +147,12 @@ get_header();
             </div>
         </article>
         <article class="event-card">
-            <div class="event-card__photo"><div class="photo-slot photo-event-2 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'event-crucible.jpg' ); ?>');background-size:cover;background-position:center;"></div><span class="event-card__badge event-card__badge--replay">▣ REPLAY</span></div>
+            <div class="event-card__photo event-card__photo--poster"><div class="photo-slot photo-event-2 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'event-crucible.jpg' ); ?>');background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#050103;"></div><span class="event-card__badge event-card__badge--replay">▣ PAST EVENT</span></div>
             <div class="event-card__body">
-                <span class="event-card__date">JUN 26 · 2026 · DEBUT SHOW</span>
+                <span class="event-card__date">JUN 26 · 2026 · PAST EVENT</span>
                 <h3>Crucible</h3>
-                <p>The night FAW launched. Phantom vs. Steve O'Malley headlined a sold-out Dungeon Bar.</p>
-                <div class="event-card__foot"><span class="event-card__price">Archive</span><a href="<?php echo esc_url( home_url( '/#gallery' ) ); ?>" class="btn btn--ghost btn--sm">View →</a></div>
+                <p>The night FAW launched. Phantom vs. Steve O'Malley headlined a sold-out Dungeon Bar on June 26, 2026.</p>
+                <div class="event-card__foot"><span class="event-card__price">Archive</span><a href="<?php echo esc_url( home_url( '/#gallery' ) ); ?>" class="btn btn--ghost btn--sm">View Photos →</a></div>
             </div>
         </article>
     </div>
