@@ -16,7 +16,7 @@ get_header();
 <!-- ============ HERO (full-screen) ============ -->
 <section class="hero" id="home">
     <div class="hero__slides" id="heroSlides">
-        <article class="slide slide--active" style="--accent:#e8163f">
+        <article class="slide slide--active" style="--accent:#8b0a1e">
             <div class="slide__bg slide__bg-a"></div>
             <div class="slide__photo-frame">
                 <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="slide__photo-link">
