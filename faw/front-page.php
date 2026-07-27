@@ -19,7 +19,7 @@ get_header();
         <article class="slide slide--active" style="--accent:#e8163f">
             <div class="slide__bg slide__bg-a"></div>
             <div class="slide__photo-frame">
-                <div class="photo-slot photo-hero-1 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'gallery/c015-lg.jpg' ); ?>');background-size:cover;background-position:center;"></div>
+                <div class="photo-slot photo-hero-1 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'rev-hero.jpg' ); ?>');background-size:cover;background-position:center;"></div>
             </div>
             <div class="slide__overlay"></div>
             <div class="slide__content">
@@ -83,6 +83,26 @@ get_header();
         <span class="ticker-strip__item">NEW MERCH DROPS AT EVERY SHOW</span><span class="ticker-strip__sep">/</span>
     </div>
 </div>
+
+<!-- ============ MATCH CARDS — REVOLUTION ON THE RIVER ============ -->
+<section class="match-cards-section" id="matchcards">
+    <div class="section-head">
+        <span class="kicker">▸ REVOLUTION ON THE RIVER · AUG 15 · 2026</span>
+        <h2 class="section-title">THE <span class="hl">MATCH CARD</span></h2>
+        <p class="section-sub">The full card for the biggest FAW event of the year.</p>
+    </div>
+    <div class="match-cards__grid">
+        <div class="match-card fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'match-1.jpg' ); ?>');"></div>
+        <div class="match-card fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'match-2.jpg' ); ?>');"></div>
+        <div class="match-card fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'match-3.jpg' ); ?>');"></div>
+        <div class="match-card fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'match-4.jpg' ); ?>');"></div>
+        <div class="match-card fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'match-5.jpg' ); ?>');"></div>
+        <div class="match-card fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'rev-hero.jpg' ); ?>');"></div>
+    </div>
+    <div class="match-cards__cta">
+        <a href="https://revolution-on-the-river.eventbrite.com" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Get Tickets →</a>
+    </div>
+</section>
 
 <!-- ============ ROSTER COVERFLOW ============ -->
 <section class="coverflow-section" id="roster">
