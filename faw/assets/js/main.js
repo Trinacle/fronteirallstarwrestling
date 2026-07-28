@@ -145,26 +145,20 @@
      5. ROSTER 3D COVERFLOW
      ============================================================ */
   var WRESTLERS = (window.FAW_DATA && window.FAW_DATA.roster) ? window.FAW_DATA.roster : [
-    { name: 'Phantom', initials: 'PH', role: 'High Flyer', tags: ['flyer'], color: '#a855f7', glow: 'rgba(168,85,247,0.28)', img: 'img/phantom.webp', height: '5\'10"', weight: '185 lbs', from: 'Parts Unknown', bio: 'A masked high-flyer who defies gravity and disappears into the lights. No rope too high, no dive too reckless.', signature: 'The Phantom Drop' },
-    { name: 'Xander Gold', initials: 'XG', role: 'Showman', tags: ['flyer','technical'], color: '#ffb020', glow: 'rgba(255,176,32,0.28)', img: 'img/xander-gold.webp', height: '6\'0"', weight: '210 lbs', from: 'Los Angeles, CA', bio: 'If wrestling is a show, Xander Gold is the headliner. Equal parts athlete and entertainer.', signature: 'The Gold Standard' },
-    { name: 'Mustang Mike', initials: 'MM', role: 'High Flyer', tags: ['flyer'], color: '#8b0a1e', glow: 'rgba(139,10,30,0.3)', img: 'img/mustang-mike.webp', height: '5\'9"', weight: '175 lbs', from: 'Dallas, TX', bio: 'Built like a muscle car and twice as fast. The crowd-favorite underdog with a motor that never quits.', signature: 'The Stampede' },
-    { name: 'Kris Keith', initials: 'KK', role: 'Heavyweight Champion', tags: ['heavyweight','champion'], color: '#f5c542', glow: 'rgba(245,197,66,0.3)', img: 'img/kris-keith.webp', height: '6\'3"', weight: '255 lbs', from: 'New Orleans, LA', bio: 'The inaugural FAW Heavyweight Champion. A powerhouse brawler who combines raw strength with surprising agility, Kris Keith battered his way through the Crucible tournament to claim the gold.', champion: 'FAW Heavyweight Champion', signature: 'The Bayou Bomb' },
-    { name: 'Izaiah Zane', initials: 'IZ', role: 'Technician', tags: ['technical'], color: '#0ea5e9', glow: 'rgba(14,165,233,0.28)', img: 'img/izaiah-zane.webp', height: '5\'11"', weight: '200 lbs', from: 'Atlanta, GA', bio: 'A mat general who treats every match like a chess game. The quiet assassin of the FAW locker room.', signature: 'Zane Cradle' },
-    { name: 'Cowboy Cliff Rogers', initials: 'CR', role: 'Brawler', tags: ['heavyweight'], color: '#d97706', glow: 'rgba(217,119,6,0.28)', img: 'img/cowboy-cliff.webp', height: '6\'2"', weight: '250 lbs', from: 'Houston, TX', bio: 'Country grit and a lariat that turns lights out. At home in a no-DQ scrap as much as a technical affair.', signature: 'Last Call Lariat' },
-    { name: 'Antonio Bronson', initials: 'AB', role: 'Heavyweight', tags: ['heavyweight'], color: '#dc2626', glow: 'rgba(220,38,38,0.3)', img: 'img/antonio-bronson.webp', height: '6\'4"', weight: '270 lbs', from: 'Chicago, IL', bio: 'The biggest man in FAW and one of the most dangerous. A walking demolition derby.', signature: 'The Windy City Driver' },
-    { name: 'Cody Hawkins', initials: 'CH', role: 'Technician', tags: ['technical'], color: '#94a3b8', glow: 'rgba(148,163,184,0.25)', img: 'img/cody-hawkins.webp', height: '5\'10"', weight: '190 lbs', from: 'Covington, LA', bio: 'The hometown hero. A crisp technical worker with the crowd firmly behind him every time.', signature: 'The Covington Clutch' },
-    { name: 'Ashton Blake', initials: 'AB', role: 'All-Rounder', tags: ['flyer','technical'], color: '#22c55e', glow: 'rgba(34,197,94,0.28)', img: 'img/ashton-blake.webp', height: '6\'0"', weight: '205 lbs', from: 'Mobile, AL', bio: 'Versatile, athletic, and impossible to pin down. One of the most dangerous wildcards on the roster.', signature: 'Blake\'s Wake' },
-    { name: 'Seymore Money', initials: 'SM', role: 'Showman', tags: ['technical'], color: '#10b981', glow: 'rgba(16,185,129,0.28)', img: 'img/seymore-money.webp', height: '5\'11"', weight: '195 lbs', from: 'New Orleans, LA', bio: 'Flashy, confident, and always got a trick up his sleeve. Seymore Money brings the showmanship every time.', signature: 'The Money Maker' },
-    { name: 'Suge Whyte', initials: 'SW', role: 'Heavyweight', tags: ['heavyweight'], color: '#8b5cf6', glow: 'rgba(139,92,246,0.28)', img: 'img/suge-whyte.webp', height: '6\'1"', weight: '245 lbs', from: 'Atlanta, GA', bio: 'A dominant force with a mean streak. Suge Whyte doesn\'t just beat opponents — he sends a message.', signature: 'The White Out' },
-    { name: 'Shawn Crow', initials: 'SC', role: 'Brawler', tags: ['heavyweight'], color: '#6366f1', glow: 'rgba(99,102,241,0.28)', img: 'img/shawn-crow.webp', height: '6\'0"', weight: '230 lbs', from: 'Memphis, TN', bio: 'Dark, relentless, and unpredictable. Shawn Crow stalks his prey and strikes when you least expect it.', signature: 'The Crow Bar' },
-    { name: 'Chris Black', initials: 'CB', role: 'Heavyweight', tags: ['heavyweight'], color: '#ef4444', glow: 'rgba(239,68,68,0.3)', img: 'img/chris-black.webp', height: '6\'2"', weight: '250 lbs', from: 'Detroit, MI', bio: 'The Franchise. A veteran technician who has held gold across the territory. Chris Black is the standard-bearer of professional wrestling.', champion: 'The Franchise', signature: 'The Blackout' },
-    { name: 'Rika & Gluttony', initials: 'RG', role: 'Tag Team', tags: ['tag','heavyweight'], color: '#ec4899', glow: 'rgba(236,72,153,0.28)', img: 'img/rika-gluttony.webp', height: 'Combined', weight: 'Combined', from: 'The Big Top', bio: 'A chaotic tag team combining Rika Wildlee\'s wild energy with The Big Top Butcher\'s raw power. Mayhem incarnate.', signature: 'The Circus Suplex' },
-    { name: 'Thaddeus Collins', initials: 'TC', role: 'Heavyweight', tags: ['heavyweight'], color: '#f59e0b', glow: 'rgba(245,158,11,0.28)', img: 'img/thaddeus.png', height: '6\'5"', weight: '275 lbs', from: 'Dallas, TX', bio: 'The Takeover. A massive athlete with championship DNA. Thaddeus Collins came to conquer.', signature: 'The Hostile Takeover' }
+    { name: 'Phantom', initials: 'PH', tags: [], color: '#a855f7', glow: 'rgba(168,85,247,0.28)', img: 'img/phantom.webp', bio: 'A masked competitor who defies gravity and disappears into the lights.' },
+    { name: 'Mustang Mike', initials: 'MM', tags: [], color: '#8b0a1e', glow: 'rgba(139,10,30,0.3)', img: 'img/mustang-mike.webp', bio: 'A crowd-favorite competitor with a motor that never quits.' },
+    { name: 'Kris Keith', initials: 'KK', tags: ['champion'], color: '#f5c542', glow: 'rgba(245,197,66,0.3)', img: 'img/kris-keith.webp', bio: 'The FAW Heavyweight Champion. A powerhouse competitor who battered his way through the Crucible tournament to claim the gold.', champion: 'FAW Heavyweight Champion' },
+    { name: 'Izaiah Zane', initials: 'IZ', tags: [], color: '#0ea5e9', glow: 'rgba(14,165,233,0.28)', img: 'img/izaiah-zane.webp', bio: 'A competitor who treats every match like a chess game.' },
+    { name: 'Cowboy Cliff Rogers', initials: 'CR', tags: [], color: '#d97706', glow: 'rgba(217,119,6,0.28)', img: 'img/cowboy-cliff.webp', bio: 'Country grit and a lariat that turns lights out.' },
+    { name: 'Ashton Blake', initials: 'AB', tags: [], color: '#22c55e', glow: 'rgba(34,197,94,0.28)', img: 'img/ashton-blake.webp', bio: 'Versatile, athletic, and impossible to pin down.' },
+    { name: 'Seymore Money', initials: 'SM', tags: [], color: '#10b981', glow: 'rgba(16,185,129,0.28)', img: 'img/seymore-money.webp', bio: 'Flashy, confident, and always got a trick up his sleeve.' },
+    { name: 'Shawn Crow', initials: 'SC', tags: [], color: '#6366f1', glow: 'rgba(99,102,241,0.28)', img: 'img/shawn-crow.webp', bio: 'Dark, relentless, and unpredictable.' },
+    { name: 'Rika & Gluttony', initials: 'RG', tags: ['tag'], color: '#ec4899', glow: 'rgba(236,72,153,0.28)', img: 'img/rika-gluttony.webp', bio: "A chaotic tag team combining Rika Wildlee's wild energy with The Big Top Butcher's raw power." }
   ];
 
   var cfStage = $('coverflowStage');
   var cfCounter = $('cfCounter');
-  var cfActive = 3; /* start at Kris Keith (4th position) */
+  var cfActive = 2; /* start at Kris Keith (3rd position) */
   var cfList = WRESTLERS.slice();
 
   function renderCoverflow(list, resetActive) {
@@ -177,7 +171,7 @@
         '<div class="cf-card__visual"' + (bg ? ' style="' + bg + '"' : '') + '>' +
           (w.img ? '' : '<span class="cf-card__initials">' + w.initials + '</span>') +
         '</div>' +
-        '<div class="cf-card__body"><div class="cf-card__role">' + w.role + '</div><h3 class="cf-card__name">' + escapeHtml(w.name) + '</h3></div>' +
+        '<div class="cf-card__body"><h3 class="cf-card__name">' + escapeHtml(w.name) + '</h3></div>' +
       '</div>';
     }).join('');
     var items = cfStage.querySelectorAll('.coverflow__item');
@@ -260,15 +254,8 @@
         (w.img ? '' : '<span class="modal__initials">' + w.initials + '</span>') +
       '</div>' +
       '<div class="modal__body" style="--wrestler-color:' + w.color + '">' +
-        '<span class="modal__role">' + w.role + '</span>' +
         '<h3>' + escapeHtml(w.name) + '</h3>' +
         '<p class="modal__bio">' + escapeHtml(w.bio) + '</p>' +
-        '<div class="modal__stats">' +
-          '<div class="modal__stat"><strong>' + w.height + '</strong><span>Height</span></div>' +
-          '<div class="modal__stat"><strong>' + w.weight + '</strong><span>Weight</span></div>' +
-          '<div class="modal__stat"><strong>' + w.from.split(',')[0] + '</strong><span>Hometown</span></div>' +
-        '</div>' +
-        '<div class="modal__sign">— ' + escapeHtml(w.signature) + '</div>' +
       '</div>';
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
