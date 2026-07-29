@@ -148,19 +148,19 @@
     { name: 'Phantom', initials: 'PH', tags: [], color: '#a855f7', glow: 'rgba(168,85,247,0.28)', img: 'img/phantom.webp', bio: 'A masked competitor who defies gravity and disappears into the lights.' },
     { name: 'Mustang Mike', initials: 'MM', tags: [], color: '#8b0a1e', glow: 'rgba(139,10,30,0.3)', img: 'img/mustang-mike.webp', bio: 'A crowd-favorite competitor with a motor that never quits.' },
     { name: 'Double K', initials: 'DK', tags: ['champion'], color: '#f5c542', glow: 'rgba(245,197,66,0.3)', img: 'img/double-k.webp', bio: 'The FAW Heavyweight Champion. A powerhouse competitor who claimed the gold at the Crucible tournament.', champion: 'FAW Heavyweight Champion' },
-    { name: 'Izaiah Zane', initials: 'IZ', tags: [], color: '#0ea5e9', glow: 'rgba(14,165,233,0.28)', img: 'img/izaiah-zane.webp', bio: 'A competitor who treats every match like a chess game.' },
-    { name: 'Cowboy Cliff Rogers', initials: 'CR', tags: [], color: '#d97706', glow: 'rgba(217,119,6,0.28)', img: 'img/cowboy-cliff.webp', bio: 'Country grit and a lariat that turns lights out.' },
-    { name: 'Ashton Blake', initials: 'AB', tags: [], color: '#22c55e', glow: 'rgba(34,197,94,0.28)', img: 'img/ashton-blake.webp', bio: 'Versatile, athletic, and impossible to pin down.' },
-    { name: 'Seymore Money', initials: 'SM', tags: [], color: '#10b981', glow: 'rgba(16,185,129,0.28)', img: 'img/seymore-money.webp', bio: 'Flashy, confident, and always got a trick up his sleeve.' },
-    { name: 'Shawn Crow', initials: 'SC', tags: [], color: '#6366f1', glow: 'rgba(99,102,241,0.28)', img: 'img/shawn-crow.webp', bio: 'Dark, relentless, and unpredictable.' },
-    { name: 'Rika & Gluttony', initials: 'RG', tags: ['tag'], color: '#ec4899', glow: 'rgba(236,72,153,0.28)', img: 'img/rika-gluttony.webp', bio: "A chaotic tag team combining Rika Wildlee's wild energy with The Big Top Butcher's raw power." },
     { name: 'Big Kon', initials: 'BK', tags: [], color: '#dc2626', glow: 'rgba(220,38,38,0.3)', img: 'img/big-kon.webp', bio: 'A dominant force in the FAW ring.' },
     { name: 'Purple Haze', initials: 'PH', tags: [], color: '#8b5cf6', glow: 'rgba(139,92,246,0.3)', img: 'img/purple-haze.webp', bio: 'An enigmatic competitor who brings the smoke.' },
     { name: 'Beautiful Bobby', initials: 'BB', tags: [], color: '#ec4899', glow: 'rgba(236,72,153,0.28)', img: 'img/beautiful-bobby.webp', bio: 'Pure style and pure skill in the ring.' },
     { name: 'Grappler III', initials: 'G3', tags: [], color: '#0891b2', glow: 'rgba(8,145,178,0.28)', img: 'img/grappler-iii.webp', bio: 'Third generation grappler with technical pedigree.' },
     { name: 'Jaxson Strong', initials: 'JS', tags: [], color: '#059669', glow: 'rgba(5,150,105,0.28)', img: 'img/jaxson-strong.webp', bio: 'Power and intensity personified.' },
     { name: 'Juice Man', initials: 'JM', tags: [], color: '#ea580c', glow: 'rgba(234,88,12,0.28)', img: 'img/juice-man.webp', bio: 'Brings the juice every time he steps in the ring.' },
-    { name: 'Rene Boucher', initials: 'RB', tags: [], color: '#7c3aed', glow: 'rgba(124,58,237,0.28)', img: 'img/rene-boucher.webp', bio: 'A fierce competitor with a relentless edge.' }
+    { name: 'Rene Boucher', initials: 'RB', tags: [], color: '#7c3aed', glow: 'rgba(124,58,237,0.28)', img: 'img/rene-boucher.webp', bio: 'A fierce competitor with a relentless edge.' },
+    { name: 'Izaiah Zane', initials: 'IZ', tags: [], color: '#0ea5e9', glow: 'rgba(14,165,233,0.28)', img: 'img/izaiah-zane.webp', bio: 'A competitor who treats every match like a chess game.' },
+    { name: 'Cowboy Cliff Rogers', initials: 'CR', tags: [], color: '#d97706', glow: 'rgba(217,119,6,0.28)', img: 'img/cowboy-cliff.webp', bio: 'Country grit and a lariat that turns lights out.' },
+    { name: 'Ashton Blake', initials: 'AB', tags: [], color: '#22c55e', glow: 'rgba(34,197,94,0.28)', img: 'img/ashton-blake.webp', bio: 'Versatile, athletic, and impossible to pin down.' },
+    { name: 'Seymore Money', initials: 'SM', tags: [], color: '#10b981', glow: 'rgba(16,185,129,0.28)', img: 'img/seymore-money.webp', bio: 'Flashy, confident, and always got a trick up his sleeve.' },
+    { name: 'Shawn Crow', initials: 'SC', tags: [], color: '#6366f1', glow: 'rgba(99,102,241,0.28)', img: 'img/shawn-crow.webp', bio: 'Dark, relentless, and unpredictable.' },
+    { name: 'Rika & Gluttony', initials: 'RG', tags: ['tag'], color: '#ec4899', glow: 'rgba(236,72,153,0.28)', img: 'img/rika-gluttony.webp', bio: "A chaotic tag team combining Rika Wildlee's wild energy with The Big Top Butcher's raw power." }
   ];
 
   var cfStage = $('coverflowStage');
