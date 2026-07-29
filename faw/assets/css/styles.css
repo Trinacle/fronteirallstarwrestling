@@ -220,7 +220,8 @@ svg { display: block; }
 .match-cards__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
 .match-card { aspect-ratio: 4/5; border-radius: var(--radius); background-size: cover; background-position: center; border: 1px solid var(--line); box-shadow: 0 20px 50px -16px rgba(0,0,0,0.8); transition: transform 0.3s var(--ease), box-shadow 0.3s; cursor: pointer; }
 .match-card:hover { transform: scale(1.03) translateY(-4px); box-shadow: 0 30px 70px -16px rgba(200,16,48,0.4); z-index: 2; }
-.match-cards__cta { text-align: center; margin-top: 40px; }
+.match-cards__more { text-align: center; margin-top: 30px; font-family: var(--ff-head); font-weight: 600; font-size: 1.1rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+.match-cards__cta { text-align: center; margin-top: 24px; }
 @media (max-width: 820px) { .match-cards__grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px) { .match-cards__grid { grid-template-columns: 1fr; } }
 

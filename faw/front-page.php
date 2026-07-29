@@ -117,6 +117,7 @@ get_header();
         <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="match-card fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'match-5.jpg' ); ?>');"></a>
         <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="match-card fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'rev-hero.jpg' ); ?>');"></a>
     </div>
+    <p class="match-cards__more">More matches to be announced soon</p>
     <div class="match-cards__cta">
         <a href="https://revolution-on-the-river.eventbrite.com" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Get Tickets →</a>
     </div>
