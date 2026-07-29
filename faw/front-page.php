@@ -134,7 +134,7 @@ get_header();
         <div class="coverflow__stage" id="coverflowStage"></div>
         <button class="coverflow__arrow coverflow__arrow--prev" id="cfPrev" aria-label="Previous wrestler">‹</button>
         <button class="coverflow__arrow coverflow__arrow--next" id="cfNext" aria-label="Next wrestler">›</button>
-        <div class="coverflow__counter" id="cfCounter">03 / <?php echo count( $roster ); ?></div>
+        <div class="coverflow__counter" id="cfCounter">04 / <?php echo count( $roster ); ?></div>
     </div>
     <div class="coverflow__filters" id="cfFilters">
         <button class="chip is-active" data-filter="all">All Roster</button>

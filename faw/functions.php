@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FAW_VERSION', '2.1.1' );
+define( 'FAW_VERSION', '2.2.0' );
 define( 'FAW_DIR', get_stylesheet_directory() );
 define( 'FAW_URI', get_stylesheet_directory_uri() );
 
@@ -281,8 +281,8 @@ function faw_get_roster() {
     $roster = array(
         array( 'name' => 'Phantom', 'initials' => 'PH', 'tags' => array(), 'color' => '#a855f7', 'glow' => 'rgba(168,85,247,0.28)', 'img' => FAW_URI . '/assets/img/phantom.webp', 'bio' => 'A masked competitor who defies gravity and disappears into the lights.' ),
         array( 'name' => 'Mustang Mike', 'initials' => 'MM', 'tags' => array(), 'color' => '#8b0a1e', 'glow' => 'rgba(139,10,30,0.3)', 'img' => FAW_URI . '/assets/img/mustang-mike.webp', 'bio' => 'A crowd-favorite competitor with a motor that never quits.' ),
-        array( 'name' => 'Double K', 'initials' => 'DK', 'tags' => array( 'champion' ), 'color' => '#f5c542', 'glow' => 'rgba(245,197,66,0.3)', 'img' => FAW_URI . '/assets/img/double-k.webp', 'bio' => 'The FAW Heavyweight Champion. A powerhouse competitor who claimed the gold at the Crucible tournament.', 'champion' => 'FAW Heavyweight Champion' ),
         array( 'name' => 'Big Kon', 'initials' => 'BK', 'tags' => array(), 'color' => '#dc2626', 'glow' => 'rgba(220,38,38,0.3)', 'img' => FAW_URI . '/assets/img/big-kon.webp', 'bio' => 'A dominant force in the FAW ring.' ),
+        array( 'name' => 'Double K', 'initials' => 'DK', 'tags' => array( 'champion' ), 'color' => '#f5c542', 'glow' => 'rgba(245,197,66,0.3)', 'img' => FAW_URI . '/assets/img/double-k.webp', 'bio' => 'The FAW Heavyweight Champion. A powerhouse competitor who claimed the gold at the Crucible tournament.', 'champion' => 'FAW Heavyweight Champion' ),
         array( 'name' => 'Purple Haze', 'initials' => 'PH', 'tags' => array(), 'color' => '#8b5cf6', 'glow' => 'rgba(139,92,246,0.3)', 'img' => FAW_URI . '/assets/img/purple-haze.webp', 'bio' => 'An enigmatic competitor who brings the smoke.' ),
         array( 'name' => 'Beautiful Bobby', 'initials' => 'BB', 'tags' => array(), 'color' => '#ec4899', 'glow' => 'rgba(236,72,153,0.28)', 'img' => FAW_URI . '/assets/img/beautiful-bobby.webp', 'bio' => 'Pure style and pure skill in the ring.' ),
         array( 'name' => 'Grappler III', 'initials' => 'G3', 'tags' => array(), 'color' => '#0891b2', 'glow' => 'rgba(8,145,178,0.28)', 'img' => FAW_URI . '/assets/img/grappler-iii.webp', 'bio' => 'Third generation grappler with technical pedigree.' ),
