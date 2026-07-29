@@ -372,6 +372,19 @@
     }, { passive: true });
   }
 
+  /* ---------- Match Card Lightbox ---------- */
+  var MATCH_CARDS = window.FAW_MATCHES || [];
+  var matchThumbs = document.querySelectorAll('.match-card[data-match]');
+  for (var mt = 0; mt < matchThumbs.length; mt++) {
+    matchThumbs[mt].addEventListener('click', function () {
+      var mi = parseInt(this.getAttribute('data-match'), 10);
+      if (!MATCH_CARDS.length || !lightbox) return;
+      // swap gallery to match cards temporarily
+      GALLERY = MATCH_CARDS;
+      openLightbox(mi);
+    });
+  }
+
   /* ---------- Forms (WordPress AJAX) ---------- */
   var AJAX_URL = (window.FAW_DATA && window.FAW_DATA.ajaxUrl) || '';
   var AJAX_NONCE = (window.FAW_DATA && window.FAW_DATA.nonce) || '';

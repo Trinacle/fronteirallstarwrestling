@@ -110,14 +110,22 @@ get_header();
         <p class="section-sub">The full card for the biggest FAW event of the year.</p>
     </div>
     <div class="match-cards__grid">
-        <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="match-card fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'match-1.jpg' ); ?>');"></a>
-        <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="match-card fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'match-2.jpg' ); ?>');"></a>
-        <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="match-card fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'match-3.jpg' ); ?>');"></a>
-        <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="match-card fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'match-4.jpg' ); ?>');"></a>
-        <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="match-card fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'match-5.jpg' ); ?>');"></a>
-        <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="match-card fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'rev-hero.jpg' ); ?>');"></a>
+        <div class="match-card fade-in-img" data-match="0" style="background-image:url('<?php echo esc_url( $img_uri . 'match-1.jpg' ); ?>');cursor:pointer;"></div>
+        <div class="match-card fade-in-img" data-match="1" style="background-image:url('<?php echo esc_url( $img_uri . 'match-2.jpg' ); ?>');cursor:pointer;"></div>
+        <div class="match-card fade-in-img" data-match="2" style="background-image:url('<?php echo esc_url( $img_uri . 'match-3.jpg' ); ?>');cursor:pointer;"></div>
+        <div class="match-card fade-in-img" data-match="3" style="background-image:url('<?php echo esc_url( $img_uri . 'match-4.jpg' ); ?>');cursor:pointer;"></div>
+        <div class="match-card fade-in-img" data-match="4" style="background-image:url('<?php echo esc_url( $img_uri . 'match-5.jpg' ); ?>');cursor:pointer;"></div>
+        <div class="match-card fade-in-img" data-match="5" style="background-image:url('<?php echo esc_url( $img_uri . 'rev-hero.jpg' ); ?>');cursor:pointer;"></div>
     </div>
     <p class="match-cards__more">More matches to be announced soon</p>
+    <script>window.FAW_MATCHES = [
+        '<?php echo esc_js( $img_uri . 'match-1.jpg' ); ?>',
+        '<?php echo esc_js( $img_uri . 'match-2.jpg' ); ?>',
+        '<?php echo esc_js( $img_uri . 'match-3.jpg' ); ?>',
+        '<?php echo esc_js( $img_uri . 'match-4.jpg' ); ?>',
+        '<?php echo esc_js( $img_uri . 'match-5.jpg' ); ?>',
+        '<?php echo esc_js( $img_uri . 'rev-hero.jpg' ); ?>'
+    ];</script>
     <div class="match-cards__cta">
         <a href="https://revolution-on-the-river.eventbrite.com" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Get Tickets →</a>
     </div>
@@ -155,7 +163,7 @@ get_header();
     </div>
     <div class="h-carousel h-carousel--center" id="eventsCarousel">
         <article class="event-card event-card--feature">
-            <div class="event-card__photo event-card__photo--poster"><div class="photo-slot photo-event-1 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'rev-hero.jpg' ); ?>');background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#050103;"></div><span class="event-card__badge">● SELLING FAST</span></div>
+            <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="event-card__photo event-card__photo--poster event-card__photo--link"><div class="photo-slot photo-event-1 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'rev-hero.jpg' ); ?>');background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#050103;"></div><span class="event-card__badge">● SELLING FAST</span></a>
             <div class="event-card__body">
                 <span class="event-card__date">SAT · AUG 15 · 2026 · 5:00 PM</span>
                 <h3>Revolution on the River</h3>
@@ -164,7 +172,7 @@ get_header();
             </div>
         </article>
         <article class="event-card">
-            <div class="event-card__photo event-card__photo--poster"><div class="photo-slot photo-event-2 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'event-crucible.jpg' ); ?>');background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#050103;"></div><span class="event-card__badge event-card__badge--replay">▣ PAST EVENT</span></div>
+            <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="event-card__photo event-card__photo--poster event-card__photo--link"><div class="photo-slot photo-event-2 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'event-crucible.jpg' ); ?>');background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#050103;"></div><span class="event-card__badge event-card__badge--replay">▣ PAST EVENT</span></a>
             <div class="event-card__body">
                 <span class="event-card__date">JUN 26 · 2026 · PAST EVENT</span>
                 <h3>Crucible</h3>
