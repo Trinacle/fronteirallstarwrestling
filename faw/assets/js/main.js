@@ -158,7 +158,9 @@
     { name: 'Purple Haze', initials: 'PH', tags: [], color: '#8b5cf6', glow: 'rgba(139,92,246,0.3)', img: 'img/purple-haze.webp', bio: 'An enigmatic competitor who brings the smoke.' },
     { name: 'Beautiful Bobby', initials: 'BB', tags: [], color: '#ec4899', glow: 'rgba(236,72,153,0.28)', img: 'img/beautiful-bobby.webp', bio: 'Pure style and pure skill in the ring.' },
     { name: 'Grappler III', initials: 'G3', tags: [], color: '#0891b2', glow: 'rgba(8,145,178,0.28)', img: 'img/grappler-iii.webp', bio: 'Third generation grappler with technical pedigree.' },
-    { name: 'Jaxson Strong', initials: 'JS', tags: [], color: '#059669', glow: 'rgba(5,150,105,0.28)', img: 'img/jaxson-strong.webp', bio: 'Power and intensity personified.' }
+    { name: 'Jaxson Strong', initials: 'JS', tags: [], color: '#059669', glow: 'rgba(5,150,105,0.28)', img: 'img/jaxson-strong.webp', bio: 'Power and intensity personified.' },
+    { name: 'Juice Man', initials: 'JM', tags: [], color: '#ea580c', glow: 'rgba(234,88,12,0.28)', img: 'img/juice-man.webp', bio: 'Brings the juice every time he steps in the ring.' },
+    { name: 'Rene Boucher', initials: 'RB', tags: [], color: '#7c3aed', glow: 'rgba(124,58,237,0.28)', img: 'img/rene-boucher.webp', bio: 'A fierce competitor with a relentless edge.' }
   ];
 
   var cfStage = $('coverflowStage');

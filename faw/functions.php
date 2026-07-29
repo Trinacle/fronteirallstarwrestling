@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FAW_VERSION', '1.8.0' );
+define( 'FAW_VERSION', '1.8.1' );
 define( 'FAW_DIR', get_stylesheet_directory() );
 define( 'FAW_URI', get_stylesheet_directory_uri() );
 
@@ -293,6 +293,8 @@ function faw_get_roster() {
         array( 'name' => 'Beautiful Bobby', 'initials' => 'BB', 'tags' => array(), 'color' => '#ec4899', 'glow' => 'rgba(236,72,153,0.28)', 'img' => FAW_URI . '/assets/img/beautiful-bobby.webp', 'bio' => 'Pure style and pure skill in the ring.' ),
         array( 'name' => 'Grappler III', 'initials' => 'G3', 'tags' => array(), 'color' => '#0891b2', 'glow' => 'rgba(8,145,178,0.28)', 'img' => FAW_URI . '/assets/img/grappler-iii.webp', 'bio' => 'Third generation grappler with technical pedigree.' ),
         array( 'name' => 'Jaxson Strong', 'initials' => 'JS', 'tags' => array(), 'color' => '#059669', 'glow' => 'rgba(5,150,105,0.28)', 'img' => FAW_URI . '/assets/img/jaxson-strong.webp', 'bio' => 'Power and intensity personified.' ),
+        array( 'name' => 'Juice Man', 'initials' => 'JM', 'tags' => array(), 'color' => '#ea580c', 'glow' => 'rgba(234,88,12,0.28)', 'img' => FAW_URI . '/assets/img/juice-man.webp', 'bio' => 'Brings the juice every time he steps in the ring.' ),
+        array( 'name' => 'Rene Boucher', 'initials' => 'RB', 'tags' => array(), 'color' => '#7c3aed', 'glow' => 'rgba(124,58,237,0.28)', 'img' => FAW_URI . '/assets/img/rene-boucher.webp', 'bio' => 'A fierce competitor with a relentless edge.' ),
     );
     return $roster;
 }
