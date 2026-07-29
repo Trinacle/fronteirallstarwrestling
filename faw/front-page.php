@@ -43,21 +43,37 @@ get_header();
         <article class="slide" style="--accent:#f5c542">
             <div class="slide__bg slide__bg-b"></div>
             <div class="slide__photo-frame">
-                <div class="photo-slot photo-hero-2 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'double-k.webp' ); ?>');background-size:cover;background-position:center top;"></div>
+                <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="slide__photo-link">
+                    <div class="photo-slot photo-hero-2 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'double-k.webp' ); ?>');background-size:cover;background-position:center top;"></div>
+                </a>
             </div>
             <div class="slide__overlay"></div>
             <div class="slide__content">
                 <span class="slide__tag">▸ THE CHAMPION</span>
                 <h1 class="slide__title">DOUBLE<br><span class="slide__title-accent">K</span></h1>
-                <p class="slide__copy">The inaugural FAW Heavyweight Champion. A powerhouse brawler who battered his way through the Crucible tournament to claim the gold.</p>
-                <div class="slide__meta">
-                    <div class="slide__meta-item"><span class="slide__meta-k">HEIGHT</span><span class="slide__meta-v">6'3"</span></div>
-                    <div class="slide__meta-item"><span class="slide__meta-k">WEIGHT</span><span class="slide__meta-v">255 lbs</span></div>
-                    <div class="slide__meta-item"><span class="slide__meta-k">FINISHER</span><span class="slide__meta-v">Bayou Bomb</span></div>
-                </div>
+                <p class="slide__copy">The FAW Heavyweight Champion. A powerhouse competitor who claimed the gold at the Crucible tournament.</p>
                 <div class="slide__cta">
-                    <a href="<?php echo esc_url( home_url( '/#roster' ) ); ?>" class="btn btn--primary">View Full Roster</a>
-                    <a href="<?php echo esc_url( home_url( '/#merch' ) ); ?>" class="btn btn--ghost">Shop Gear</a>
+                    <a href="https://revolution-on-the-river.eventbrite.com" class="btn btn--primary" target="_blank" rel="noopener">Get Tickets →</a>
+                    <a href="<?php echo esc_url( home_url( '/#roster' ) ); ?>" class="btn btn--ghost">View Full Roster</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="slide" style="--accent:#dc2626">
+            <div class="slide__bg slide__bg-c"></div>
+            <div class="slide__photo-frame">
+                <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="slide__photo-link">
+                    <div class="photo-slot photo-hero-3 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'big-kon.webp' ); ?>');background-size:cover;background-position:center top;"></div>
+                </a>
+            </div>
+            <div class="slide__overlay"></div>
+            <div class="slide__content">
+                <span class="slide__tag">▸ THE CHALLENGER</span>
+                <h1 class="slide__title">BIG<br><span class="slide__title-accent">KON</span></h1>
+                <p class="slide__copy">The challenger steps up. <strong>Big Kon</strong> looks to dethrone Double K and take the FAW Heavyweight Championship at Revolution on the River.</p>
+                <div class="slide__cta">
+                    <a href="https://revolution-on-the-river.eventbrite.com" class="btn btn--primary" target="_blank" rel="noopener">Get Tickets →</a>
+                    <a href="<?php echo esc_url( home_url( '/#roster' ) ); ?>" class="btn btn--ghost">View Full Roster</a>
                 </div>
             </div>
         </article>
