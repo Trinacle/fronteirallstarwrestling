@@ -313,6 +313,63 @@
     counters.forEach(function (c) { cObs.observe(c); });
   } else { counters.forEach(function (c) { c.textContent = c.getAttribute('data-count'); }); }
 
+  /* ---------- Lightbox Gallery ---------- */
+  var GALLERY = window.FAW_GALLERY || [];
+  var lightbox = $('lightbox');
+  var lightboxImg = $('lightboxImg');
+  var lightboxCounter = $('lightboxCounter');
+  var lbIndex = 0;
+
+  function openLightbox(i) {
+    if (!GALLERY.length || !lightbox) return;
+    lbIndex = i;
+    showLightboxImage();
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function showLightboxImage() {
+    if (lbIndex < 0) lbIndex = GALLERY.length - 1;
+    if (lbIndex >= GALLERY.length) lbIndex = 0;
+    lightboxImg.style.backgroundImage = 'url(' + GALLERY[lbIndex] + ')';
+    if (lightboxCounter) lightboxCounter.textContent = (lbIndex + 1) + ' / ' + GALLERY.length;
+  }
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // wire up gallery thumbnails
+  var thumbs = document.querySelectorAll('.gallery-thumb[data-lightbox]');
+  for (var t = 0; t < thumbs.length; t++) {
+    thumbs[t].addEventListener('click', function () {
+      openLightbox(parseInt(this.getAttribute('data-lightbox'), 10));
+    });
+  }
+  // lightbox controls
+  var lbClose = $('lightboxClose'), lbPrev = $('lightboxPrev'), lbNext = $('lightboxNext');
+  if (lbClose) lbClose.addEventListener('click', closeLightbox);
+  if (lbPrev) lbPrev.addEventListener('click', function () { lbIndex--; showLightboxImage(); });
+  if (lbNext) lbNext.addEventListener('click', function () { lbIndex++; showLightboxImage(); });
+  if (lightbox) lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox || !lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') { lbIndex--; showLightboxImage(); }
+    if (e.key === 'ArrowRight') { lbIndex++; showLightboxImage(); }
+  });
+  // touch swipe on lightbox
+  if (lightbox) {
+    var lbSx = 0;
+    lightbox.addEventListener('touchstart', function (e) { lbSx = e.touches[0].clientX; }, { passive: true });
+    lightbox.addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].clientX - lbSx;
+      if (Math.abs(dx) > 50) { if (dx < 0) lbIndex++; else lbIndex--; showLightboxImage(); }
+    }, { passive: true });
+  }
+
   /* ---------- Forms (WordPress AJAX) ---------- */
   var AJAX_URL = (window.FAW_DATA && window.FAW_DATA.ajaxUrl) || '';
   var AJAX_NONCE = (window.FAW_DATA && window.FAW_DATA.nonce) || '';

@@ -191,26 +191,39 @@ get_header();
     </div>
 </section>
 
-<!-- ============ PHOTO GALLERY — HORIZONTAL CAROUSEL ============ -->
+<!-- ============ PHOTO GALLERY — 2-ROW GRID + LIGHTBOX ============ -->
 <section class="h-section" id="gallery">
     <div class="section-head">
         <span class="kicker">FROM THE RING</span>
         <h2 class="section-title">EVENT <span class="hl">GALLERY</span></h2>
-        <p class="section-sub">The action, the crowd, the chaos. Swipe or drag →</p>
+        <p class="section-sub">The action, the crowd, the chaos. Click any photo to view full size.</p>
     </div>
-    <div class="h-carousel h-carousel--gallery" id="galleryCarousel">
+    <div class="gallery-grid" id="galleryGrid">
         <?php
-        $gallery_imgs = array( 'c005', 'c012', 'c025', 'c035', 'c048', 'c060', 'c075', 'c090', 'c095', 'c100' );
-        $sizes = array( 'tall', '', 'wide', 'tall', '', 'wide', 'tall', '', 'wide', 'tall' );
+        $gallery_imgs = array( 'c005', 'c010', 'c012', 'c015', 'c020', 'c022', 'c025', 'c030', 'c035', 'c040', 'c045', 'c048', 'c050', 'c055', 'c060', 'c065', 'c070', 'c075', 'c080', 'c085', 'c090', 'c095', 'c100' );
         foreach ( $gallery_imgs as $i => $g ) :
-            $cls = $sizes[ $i ] ? ' gallery-item--' . $sizes[ $i ] : '';
         ?>
-        <div class="gallery-item<?php echo esc_attr( $cls ); ?>">
-            <div class="photo-slot gallery-img fade-in-img" data-gallery="<?php echo esc_attr( $i + 1 ); ?>" style="background-image:url('<?php echo esc_url( $img_uri . 'gallery/' . $g . '-lg.jpg' ); ?>');background-size:cover;background-position:center;"></div>
-        </div>
+        <div class="gallery-thumb fade-in-img" data-lightbox="<?php echo esc_attr( $i ); ?>" style="background-image:url('<?php echo esc_url( $img_uri . 'gallery/' . $g . '-md.jpg' ); ?>');background-size:cover;background-position:center;"></div>
         <?php endforeach; ?>
     </div>
 </section>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Close">×</button>
+    <button class="lightbox__arrow lightbox__arrow--prev" id="lightboxPrev" aria-label="Previous">‹</button>
+    <button class="lightbox__arrow lightbox__arrow--next" id="lightboxNext" aria-label="Next">›</button>
+    <div class="lightbox__img" id="lightboxImg"></div>
+    <div class="lightbox__counter" id="lightboxCounter"></div>
+</div>
+<script>
+// Build lightbox image array from the gallery data
+window.FAW_GALLERY = [
+    <?php foreach ( $gallery_imgs as $g ) : ?>
+    '<?php echo esc_js( $img_uri . 'gallery/' . $g . '-lg.jpg' ); ?>',
+    <?php endforeach; ?>
+];
+</script>
 
 <!-- ============ MERCHANDISE ============ -->
 <section class="merch" id="merch">

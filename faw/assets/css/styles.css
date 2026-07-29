@@ -288,6 +288,23 @@ svg { display: block; }
 .gallery-item--wide { width: 560px; height: 420px; }
 .gallery-item .photo-slot { width: 100%; height: 100%; }
 
+/* Gallery grid — 2 rows x 5 cols */
+.gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(2, 1fr); gap: 12px; max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
+.gallery-thumb { aspect-ratio: 4/3; border-radius: var(--radius-sm); cursor: pointer; border: 1px solid var(--line); transition: transform 0.3s var(--ease), border-color 0.3s; background-color: var(--panel); }
+.gallery-thumb:hover { transform: scale(1.04); border-color: var(--crimson-bright); z-index: 2; box-shadow: 0 12px 30px -8px rgba(0,0,0,0.6); }
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 400; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.95); opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
+.lightbox.is-open { opacity: 1; visibility: visible; }
+.lightbox__img { width: 90vw; max-width: 900px; height: 85vh; background-size: contain; background-position: center; background-repeat: no-repeat; border-radius: var(--radius); }
+.lightbox__close { position: absolute; top: 20px; right: 24px; z-index: 5; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.1); color: #fff; font-size: 2rem; line-height: 1; display: grid; place-items: center; }
+.lightbox__close:hover { background: var(--crimson-bright); }
+.lightbox__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,0.1); color: #fff; font-size: 2.4rem; line-height: 1; display: grid; place-items: center; }
+.lightbox__arrow:hover { background: var(--crimson-bright); }
+.lightbox__arrow--prev { left: 24px; }
+.lightbox__arrow--next { right: 24px; }
+.lightbox__counter { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); color: #fff; font-family: var(--ff-display); font-size: 1.1rem; letter-spacing: 0.08em; }
+
 /* image fade-in on load */
 .fade-in-img { opacity: 0; transition: opacity 0.8s ease; }
 .fade-in-img.is-loaded { opacity: 1; }
