@@ -51,6 +51,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
             <a href="https://revolution-on-the-river.eventbrite.com" class="btn btn--primary btn--sm" target="_blank" rel="noopener">Tickets</a>
         </nav>
 
+        <a href="https://revolution-on-the-river.eventbrite.com" class="btn btn--primary btn--sm nav__tickets-mobile" target="_blank" rel="noopener">Tickets</a>
+
         <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>

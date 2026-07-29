@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FAW_VERSION', '2.4.0' );
+define( 'FAW_VERSION', '2.4.1' );
 define( 'FAW_DIR', get_stylesheet_directory() );
 define( 'FAW_URI', get_stylesheet_directory_uri() );
 
