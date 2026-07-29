@@ -27,7 +27,7 @@ get_header();
             <div class="slide__content">
                 <span class="slide__tag">▸ MAIN EVENT</span>
                 <h1 class="slide__title">REVOLUTION<br><span class="slide__title-accent">ON THE RIVER</span></h1>
-                <p class="slide__copy">The frontier explodes back onto the Northshore. <strong>Kris Keith</strong> defends the FAW Heavyweight Championship in the biggest showdown of the year.</p>
+                <p class="slide__copy">The frontier explodes back onto the Northshore. <strong>Double K</strong> defends the FAW Heavyweight Championship in the biggest showdown of the year.</p>
                 <div class="slide__meta">
                     <div class="slide__meta-item"><span class="slide__meta-k">DATE</span><span class="slide__meta-v">Aug 15, 2026</span></div>
                     <div class="slide__meta-item"><span class="slide__meta-k">VENUE</span><span class="slide__meta-v">Covington Country Club</span></div>
@@ -43,12 +43,12 @@ get_header();
         <article class="slide" style="--accent:#f5c542">
             <div class="slide__bg slide__bg-b"></div>
             <div class="slide__photo-frame">
-                <div class="photo-slot photo-hero-2 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'kris-keith.webp' ); ?>');background-size:cover;background-position:center top;"></div>
+                <div class="photo-slot photo-hero-2 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'double-k.webp' ); ?>');background-size:cover;background-position:center top;"></div>
             </div>
             <div class="slide__overlay"></div>
             <div class="slide__content">
                 <span class="slide__tag">▸ THE CHAMPION</span>
-                <h1 class="slide__title">KRIS<br><span class="slide__title-accent">KEITH</span></h1>
+                <h1 class="slide__title">DOUBLE<br><span class="slide__title-accent">K</span></h1>
                 <p class="slide__copy">The inaugural FAW Heavyweight Champion. A powerhouse brawler who battered his way through the Crucible tournament to claim the gold.</p>
                 <div class="slide__meta">
                     <div class="slide__meta-item"><span class="slide__meta-k">HEIGHT</span><span class="slide__meta-v">6'3"</span></div>
@@ -142,7 +142,7 @@ get_header();
             <div class="event-card__body">
                 <span class="event-card__date">SAT · AUG 15 · 2026 · 5:00 PM</span>
                 <h3>Revolution on the River</h3>
-                <p>Kris Keith defends the FAW Heavyweight Championship. Covington Country Club.</p>
+                <p>Double K defends the FAW Heavyweight Championship. Covington Country Club.</p>
                 <div class="event-card__foot"><span class="event-card__price">From $13.67</span><a href="https://revolution-on-the-river.eventbrite.com" class="btn btn--primary btn--sm" target="_blank" rel="noopener">Tickets →</a></div>
             </div>
         </article>
@@ -234,7 +234,7 @@ get_header();
             <span class="ig-card__overlay"><span class="ig-card__icon">▸</span> Body slams. High flyers. A packed house losing its mind.</span>
         </a>
         <a href="https://www.instagram.com/p/DYZprLNEY4I/" target="_blank" rel="noopener" class="ig-card fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'gallery/c030-md.jpg' ); ?>');background-size:cover;background-position:center;">
-            <span class="ig-card__overlay"><span class="ig-card__icon">▸</span> Kris Keith continues to reign as champion.</span>
+            <span class="ig-card__overlay"><span class="ig-card__icon">▸</span> Double K continues to reign as champion.</span>
         </a>
         <a href="https://www.instagram.com/p/DN8RDxBjvfB/" target="_blank" rel="noopener" class="ig-card fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'gallery/c040-md.jpg' ); ?>');background-size:cover;background-position:center;">
             <span class="ig-card__overlay"><span class="ig-card__icon">▸</span> Phantom makes his intentions VERY clear.</span>
@@ -320,7 +320,7 @@ get_header();
         <div class="full-bleed-section__content">
             <span class="kicker">▸ LATEST</span>
             <h2 class="section-title">FAW <span class="hl">NEWS</span></h2>
-            <p class="full-bleed-section__copy">Kris Keith defends the gold at Revolution on the River — what's expected to be the biggest crowd in Frontier history.</p>
+            <p class="full-bleed-section__copy">Double K defends the gold at Revolution on the River — what's expected to be the biggest crowd in Frontier history.</p>
             <a href="https://www.instagram.com/frontierallstarwrestling/" class="btn btn--ghost" target="_blank" rel="noopener">Read More on Instagram →</a>
         </div>
     </div>

@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FAW_VERSION', '1.7.0' );
+define( 'FAW_VERSION', '1.8.0' );
 define( 'FAW_DIR', get_stylesheet_directory() );
 define( 'FAW_URI', get_stylesheet_directory_uri() );
 
@@ -281,13 +281,18 @@ function faw_get_roster() {
     $roster = array(
         array( 'name' => 'Phantom', 'initials' => 'PH', 'tags' => array(), 'color' => '#a855f7', 'glow' => 'rgba(168,85,247,0.28)', 'img' => FAW_URI . '/assets/img/phantom.webp', 'bio' => 'A masked competitor who defies gravity and disappears into the lights.' ),
         array( 'name' => 'Mustang Mike', 'initials' => 'MM', 'tags' => array(), 'color' => '#8b0a1e', 'glow' => 'rgba(139,10,30,0.3)', 'img' => FAW_URI . '/assets/img/mustang-mike.webp', 'bio' => 'A crowd-favorite competitor with a motor that never quits.' ),
-        array( 'name' => 'Kris Keith', 'initials' => 'KK', 'tags' => array( 'champion' ), 'color' => '#f5c542', 'glow' => 'rgba(245,197,66,0.3)', 'img' => FAW_URI . '/assets/img/kris-keith.webp', 'bio' => 'The FAW Heavyweight Champion. A powerhouse competitor who battered his way through the Crucible tournament to claim the gold.', 'champion' => 'FAW Heavyweight Champion' ),
+        array( 'name' => 'Double K', 'initials' => 'DK', 'tags' => array( 'champion' ), 'color' => '#f5c542', 'glow' => 'rgba(245,197,66,0.3)', 'img' => FAW_URI . '/assets/img/double-k.webp', 'bio' => 'The FAW Heavyweight Champion. A powerhouse competitor who claimed the gold at the Crucible tournament.', 'champion' => 'FAW Heavyweight Champion' ),
         array( 'name' => 'Izaiah Zane', 'initials' => 'IZ', 'tags' => array(), 'color' => '#0ea5e9', 'glow' => 'rgba(14,165,233,0.28)', 'img' => FAW_URI . '/assets/img/izaiah-zane.webp', 'bio' => 'A competitor who treats every match like a chess game.' ),
         array( 'name' => 'Cowboy Cliff Rogers', 'initials' => 'CR', 'tags' => array(), 'color' => '#d97706', 'glow' => 'rgba(217,119,6,0.28)', 'img' => FAW_URI . '/assets/img/cowboy-cliff.webp', 'bio' => 'Country grit and a lariat that turns lights out.' ),
         array( 'name' => 'Ashton Blake', 'initials' => 'AB', 'tags' => array(), 'color' => '#22c55e', 'glow' => 'rgba(34,197,94,0.28)', 'img' => FAW_URI . '/assets/img/ashton-blake.webp', 'bio' => 'Versatile, athletic, and impossible to pin down.' ),
         array( 'name' => 'Seymore Money', 'initials' => 'SM', 'tags' => array(), 'color' => '#10b981', 'glow' => 'rgba(16,185,129,0.28)', 'img' => FAW_URI . '/assets/img/seymore-money.webp', 'bio' => 'Flashy, confident, and always got a trick up his sleeve.' ),
         array( 'name' => 'Shawn Crow', 'initials' => 'SC', 'tags' => array(), 'color' => '#6366f1', 'glow' => 'rgba(99,102,241,0.28)', 'img' => FAW_URI . '/assets/img/shawn-crow.webp', 'bio' => 'Dark, relentless, and unpredictable.' ),
         array( 'name' => 'Rika & Gluttony', 'initials' => 'RG', 'tags' => array( 'tag' ), 'color' => '#ec4899', 'glow' => 'rgba(236,72,153,0.28)', 'img' => FAW_URI . '/assets/img/rika-gluttony.webp', 'bio' => "A chaotic tag team combining Rika Wildlee's wild energy with The Big Top Butcher's raw power." ),
+        array( 'name' => 'Big Kon', 'initials' => 'BK', 'tags' => array(), 'color' => '#dc2626', 'glow' => 'rgba(220,38,38,0.3)', 'img' => FAW_URI . '/assets/img/big-kon.webp', 'bio' => 'A dominant force in the FAW ring.' ),
+        array( 'name' => 'Purple Haze', 'initials' => 'PH', 'tags' => array(), 'color' => '#8b5cf6', 'glow' => 'rgba(139,92,246,0.3)', 'img' => FAW_URI . '/assets/img/purple-haze.webp', 'bio' => 'An enigmatic competitor who brings the smoke.' ),
+        array( 'name' => 'Beautiful Bobby', 'initials' => 'BB', 'tags' => array(), 'color' => '#ec4899', 'glow' => 'rgba(236,72,153,0.28)', 'img' => FAW_URI . '/assets/img/beautiful-bobby.webp', 'bio' => 'Pure style and pure skill in the ring.' ),
+        array( 'name' => 'Grappler III', 'initials' => 'G3', 'tags' => array(), 'color' => '#0891b2', 'glow' => 'rgba(8,145,178,0.28)', 'img' => FAW_URI . '/assets/img/grappler-iii.webp', 'bio' => 'Third generation grappler with technical pedigree.' ),
+        array( 'name' => 'Jaxson Strong', 'initials' => 'JS', 'tags' => array(), 'color' => '#059669', 'glow' => 'rgba(5,150,105,0.28)', 'img' => FAW_URI . '/assets/img/jaxson-strong.webp', 'bio' => 'Power and intensity personified.' ),
     );
     return $roster;
 }
