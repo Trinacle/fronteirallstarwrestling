@@ -229,11 +229,11 @@ svg { display: block; }
    ROSTER COVERFLOW
    ============================================================ */
 .coverflow-section { padding: 120px 0 90px; overflow: hidden; }
-.coverflow { position: relative; height: 560px; perspective: 1700px; max-width: 100%; }
+.coverflow { position: relative; height: 620px; perspective: 1800px; width: 100%; }
 .coverflow__stage { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; }
-.coverflow__item { position: absolute; top: 50%; left: 50%; width: 300px; height: 430px; margin-left: -150px; margin-top: -215px; border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: transform 0.6s var(--ease), opacity 0.5s; background: var(--panel); border: 1px solid var(--line-2); opacity: 0; }
+.coverflow__item { position: absolute; top: 50%; left: 50%; width: 340px; height: 480px; margin-left: -170px; margin-top: -240px; border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: transform 0.6s var(--ease), opacity 0.5s; background: var(--panel); border: 1px solid var(--line-2); opacity: 0; }
 .coverflow__item.cf-active { z-index: 10; }
-.cf-card__visual { position: relative; height: 80%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: radial-gradient(circle at 50% 35%, var(--cf-glow, rgba(200,16,48,0.3)), var(--void) 80%); }
+.cf-card__visual { position: relative; height: 82%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .cf-card__visual::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 28px 28px; }
 .cf-card__visual::after { content: ''; position: absolute; bottom: -30%; left: -10%; right: -10%; height: 60%; background: var(--cf-color, var(--crimson)); opacity: 0.2; clip-path: polygon(0 60%, 100% 0, 100% 100%, 0 100%); }
 .cf-card__initials { position: relative; z-index: 2; font-family: var(--ff-display); font-size: 7rem; line-height: 0.9; color: #fff; text-shadow: 0 8px 40px rgba(0,0,0,0.6); }

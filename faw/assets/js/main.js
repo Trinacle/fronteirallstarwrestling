@@ -168,11 +168,13 @@
   var cfActive = 2; /* start at Kris Keith (3rd position) */
   var cfList = WRESTLERS.slice();
 
+  var CF_BG = (window.FAW_DATA && window.FAW_DATA.themeUri) ? window.FAW_DATA.themeUri + '/assets/img/wrestler-bg.webp' : 'assets/img/wrestler-bg.webp';
+
   function renderCoverflow(list, resetActive) {
     if (!cfStage) return;
     cfList = list;
     cfStage.innerHTML = list.map(function (w, i) {
-      var bg = w.img ? ' background-image:url(\'' + w.img + '\');background-size:cover;background-position:center top;' : '';
+      var bg = w.img ? ' background-image:url(\'' + CF_BG + '\'),url(\'' + w.img + '\');background-size:cover,contain;background-position:center,center top;background-repeat:no-repeat,no-repeat;' : ' background-image:url(\'' + CF_BG + '\');background-size:cover;background-position:center;';
       return '<div class="coverflow__item" data-index="' + i + '" style="--cf-color:' + w.color + ';--cf-glow:' + w.glow + '">' +
         (w.champion ? '<span class="cf-card__champ">★ Champion</span>' : '') +
         '<div class="cf-card__visual"' + (bg ? ' style="' + bg + '"' : '') + '>' +
@@ -197,9 +199,9 @@
     var items = cfStage.querySelectorAll('.coverflow__item');
     if (!items.length) return;
     var isMob = window.innerWidth <= 820;
-    var spacing = isMob ? 130 : 210;
+    var spacing = isMob ? 140 : 240;
     var sideRot = isMob ? 42 : 50;
-    var zBack = isMob ? -150 : -190;
+    var zBack = isMob ? -160 : -200;
     for (var i = 0; i < items.length; i++) {
       var offset = i - cfActive, abs = Math.abs(offset);
       var tx = offset * spacing;
