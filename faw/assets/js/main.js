@@ -174,7 +174,7 @@
     if (!cfStage) return;
     cfList = list;
     cfStage.innerHTML = list.map(function (w, i) {
-      var bg = w.img ? ' background-image:url(\'' + CF_BG + '\'),url(\'' + w.img + '\');background-size:cover,contain;background-position:center,center top;background-repeat:no-repeat,no-repeat;' : ' background-image:url(\'' + CF_BG + '\');background-size:cover;background-position:center;';
+      var bg = w.img ? ' background-image:url(\'' + w.img + '\'),url(\'' + CF_BG + '\');background-size:contain,cover;background-position:center top,center;background-repeat:no-repeat,no-repeat;' : ' background-image:url(\'' + CF_BG + '\');background-size:cover;background-position:center;';
       return '<div class="coverflow__item" data-index="' + i + '" style="--cf-color:' + w.color + ';--cf-glow:' + w.glow + '">' +
         (w.champion ? '<span class="cf-card__champ">★ Champion</span>' : '') +
         '<div class="cf-card__visual"' + (bg ? ' style="' + bg + '"' : '') + '>' +
