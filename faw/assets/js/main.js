@@ -160,7 +160,8 @@
     { name: 'Ashton Blake', initials: 'AB', tags: [], color: '#22c55e', glow: 'rgba(34,197,94,0.28)', img: 'img/ashton-blake.webp', bio: 'Versatile, athletic, and impossible to pin down.' },
     { name: 'Seymore Money', initials: 'SM', tags: [], color: '#10b981', glow: 'rgba(16,185,129,0.28)', img: 'img/seymore-money.webp', bio: 'Flashy, confident, and always got a trick up his sleeve.' },
     { name: 'Shawn Crow', initials: 'SC', tags: [], color: '#6366f1', glow: 'rgba(99,102,241,0.28)', img: 'img/shawn-crow.webp', bio: 'Dark, relentless, and unpredictable.' },
-    { name: 'Rika & Gluttony', initials: 'RG', tags: ['tag'], color: '#ec4899', glow: 'rgba(236,72,153,0.28)', img: 'img/rika-gluttony.webp', bio: "A chaotic tag team combining Rika Wildlee's wild energy with The Big Top Butcher's raw power." }
+    { name: 'Rika & Gluttony', initials: 'RG', tags: ['tag'], color: '#ec4899', glow: 'rgba(236,72,153,0.28)', img: 'img/rika-gluttony.webp', bio: "A chaotic tag team combining Rika Wildlee's wild energy with The Big Top Butcher's raw power." },
+    { name: 'Da Russell Twins', initials: 'RT', tags: ['tag'], color: '#14b8a6', glow: 'rgba(20,184,166,0.28)', img: 'img/da-russell-twins.webp', bio: 'A double-trouble tag team bringing twin synergy and coordinated chaos to the FAW ring.' }
   ];
 
   var cfStage = $('coverflowStage');

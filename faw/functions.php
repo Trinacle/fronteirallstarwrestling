@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FAW_VERSION', '2.4.1' );
+define( 'FAW_VERSION', '2.5.0' );
 define( 'FAW_DIR', get_stylesheet_directory() );
 define( 'FAW_URI', get_stylesheet_directory_uri() );
 
@@ -295,6 +295,7 @@ function faw_get_roster() {
         array( 'name' => 'Seymore Money', 'initials' => 'SM', 'tags' => array(), 'color' => '#10b981', 'glow' => 'rgba(16,185,129,0.28)', 'img' => FAW_URI . '/assets/img/seymore-money.webp', 'bio' => 'Flashy, confident, and always got a trick up his sleeve.' ),
         array( 'name' => 'Shawn Crow', 'initials' => 'SC', 'tags' => array(), 'color' => '#6366f1', 'glow' => 'rgba(99,102,241,0.28)', 'img' => FAW_URI . '/assets/img/shawn-crow.webp', 'bio' => 'Dark, relentless, and unpredictable.' ),
         array( 'name' => 'Rika & Gluttony', 'initials' => 'RG', 'tags' => array( 'tag' ), 'color' => '#ec4899', 'glow' => 'rgba(236,72,153,0.28)', 'img' => FAW_URI . '/assets/img/rika-gluttony.webp', 'bio' => "A chaotic tag team combining Rika Wildlee's wild energy with The Big Top Butcher's raw power." ),
+        array( 'name' => 'Da Russell Twins', 'initials' => 'RT', 'tags' => array( 'tag' ), 'color' => '#14b8a6', 'glow' => 'rgba(20,184,166,0.28)', 'img' => FAW_URI . '/assets/img/da-russell-twins.webp', 'bio' => 'A double-trouble tag team bringing twin synergy and coordinated chaos to the FAW ring.' ),
     );
     return $roster;
 }
