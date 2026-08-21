@@ -16,8 +16,8 @@ get_header();
 <!-- ============ HERO (full-screen) ============ -->
 <section class="hero" id="home">
     <div class="hero__slides" id="heroSlides">
-        <article class="slide slide--active" style="--accent:#8b0a1e">
-            <div class="slide__bg slide__bg-a"></div>
+        <article class="slide slide--active" style="--accent:#ff8c00">
+            <div class="slide__bg slide__bg-voodoo"></div>
             <div class="slide__photo-frame">
                 <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" target="_blank" rel="noopener" class="slide__photo-link">
                     <div class="photo-slot photo-hero-1 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'voodoo-hero.jpg' ); ?>');background-size:cover;background-position:center;"></div>

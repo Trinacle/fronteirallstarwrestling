@@ -168,6 +168,7 @@ svg { display: block; }
 .slide__bg { position: absolute; inset: 0; transform: scale(1.08); transition: transform 7s ease-out; }
 .slide--active .slide__bg { transform: scale(1); }
 .slide__bg-a { background: radial-gradient(circle at 75% 30%, rgba(200,16,48,0.4), transparent 50%), linear-gradient(135deg, #150508, #050103); }
+.slide__bg-voodoo { background: radial-gradient(circle at 75% 25%, rgba(255,140,0,0.35), transparent 55%), radial-gradient(circle at 20% 70%, rgba(138,43,226,0.45), transparent 55%), linear-gradient(135deg, #1a0a2e, #0d0518, #050103); }
 .slide__bg-b { background: radial-gradient(circle at 25% 30%, rgba(245,197,66,0.25), transparent 50%), linear-gradient(135deg, #150508, #050103); }
 .slide__bg-c { background: radial-gradient(circle at 70% 40%, rgba(168,85,247,0.3), transparent 50%), linear-gradient(135deg, #10081a, #050103); }
 .slide__photo-frame { position: absolute; right: 4%; top: 50%; transform: translateY(-50%) scale(1.05); width: 42%; max-width: 640px; aspect-ratio: 3/4; border-radius: var(--radius); overflow: hidden; box-shadow: 0 40px 100px -20px rgba(0,0,0,0.9); border: 1px solid var(--line-2); transition: transform 8s ease-out; z-index: 1; }
