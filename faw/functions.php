@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FAW_VERSION', '2.7.1' );
+define( 'FAW_VERSION', '2.8.0' );
 define( 'FAW_DIR', get_stylesheet_directory() );
 define( 'FAW_URI', get_stylesheet_directory_uri() );
 
@@ -320,3 +320,48 @@ add_filter( 'wpseo_title', 'faw_seo_title' );
  * Re-enable if Forminator or similar is added
  */
 // add_filter( 'script_loader_tag', 'faw_defer_js', 10, 3 );
+
+/**
+ * Meta Pixel — base code + Eventbrite click tracking
+ * Pixel ID: 3055922027946414
+ * Fires PageView sitewide; InitiateCheckout on any eventbrite.com link click.
+ * Note: if a consent-management platform is added later, gate this behind marketing consent.
+ */
+add_action( 'wp_head', function () {
+    if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+        echo '<!-- Meta Pixel: enabled, ID 3055922027946414 -->' . "\n";
+    }
+    ?>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '3055922027946414');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=3055922027946414&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<script>
+document.addEventListener('click', function (e) {
+  var el = e.target;
+  if (!el || !el.closest) return;
+  var a = el.closest('a[href*="eventbrite.com"]');
+  if (a && typeof fbq === 'function') {
+    fbq('track', 'InitiateCheckout', {
+      content_name: 'Voodoo Nights - FAW Halloween Showdown',
+      content_category: 'Event Tickets',
+      content_ids: ['1998518316082']
+    });
+  }
+}, true);
+</script>
+    <?php
+}, 1 );
