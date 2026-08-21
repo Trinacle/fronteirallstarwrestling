@@ -133,25 +133,6 @@ get_header();
                 </div>
             </div>
         </article>
-
-        <article class="slide" style="--accent:#dc2626">
-            <div class="slide__bg slide__bg-c"></div>
-            <div class="slide__photo-frame">
-                <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" target="_blank" rel="noopener" class="slide__photo-link">
-                    <div class="photo-slot photo-hero-3 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'big-kon.webp' ); ?>');background-size:cover;background-position:center top;"></div>
-                </a>
-            </div>
-            <div class="slide__overlay"></div>
-            <div class="slide__content">
-                <span class="slide__tag">▸ THE CHALLENGER</span>
-                <h1 class="slide__title">BIG<br><span class="slide__title-accent">KON</span></h1>
-                <p class="slide__copy">The challenger steps up. <strong>Big Kon</strong> looks to dethrone Double K and take the FAW Heavyweight Championship at Voodoo Nights.</p>
-                <div class="slide__cta">
-                    <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" class="btn btn--primary" target="_blank" rel="noopener">Get Tickets →</a>
-                    <a href="<?php echo esc_url( home_url( '/#roster' ) ); ?>" class="btn btn--ghost">View Full Roster</a>
-                </div>
-            </div>
-        </article>
     </div>
 
     <button class="hero__arrow hero__arrow--prev" id="heroPrev" aria-label="Previous slide">‹</button>
