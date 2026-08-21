@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
     <div class="footer__cta-band">
         <div class="footer__cta-inner">
             <h2 class="footer__cta-title">DON'T MISS<br>THE BELL.</h2>
-            <a href="https://revolution-on-the-river.eventbrite.com" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Get Tickets →</a>
+            <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Get Tickets →</a>
         </div>
     </div>
 
@@ -56,7 +56,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
             <a href="<?php echo esc_url( home_url( '/#sponsors' ) ); ?>">Sponsors</a>
             <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">Contact</a>
             <a href="<?php echo esc_url( home_url( '/#newsletter' ) ); ?>">Newsletter</a>
-            <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener">Buy Tickets</a>
+            <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" target="_blank" rel="noopener">Buy Tickets</a>
         </div>
         <div class="footer__col">
             <h4>VENUE</h4>

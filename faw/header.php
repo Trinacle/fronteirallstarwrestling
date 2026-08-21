@@ -48,10 +48,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
         <nav class="nav__links nav__links--right" aria-label="Right navigation">
             <a href="<?php echo esc_url( home_url( '/#merch' ) ); ?>">Shop</a>
             <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>">Contact</a>
-            <a href="https://revolution-on-the-river.eventbrite.com" class="btn btn--primary btn--sm" target="_blank" rel="noopener">Tickets</a>
+            <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" class="btn btn--primary btn--sm" target="_blank" rel="noopener">Tickets</a>
         </nav>
 
-        <a href="https://revolution-on-the-river.eventbrite.com" class="btn btn--primary btn--sm nav__tickets-mobile" target="_blank" rel="noopener">Tickets</a>
+        <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" class="btn btn--primary btn--sm nav__tickets-mobile" target="_blank" rel="noopener">Tickets</a>
 
         <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>

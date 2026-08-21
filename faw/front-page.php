@@ -19,22 +19,21 @@ get_header();
         <article class="slide slide--active" style="--accent:#8b0a1e">
             <div class="slide__bg slide__bg-a"></div>
             <div class="slide__photo-frame">
-                <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="slide__photo-link">
-                    <div class="photo-slot photo-hero-1 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'rev-hero.jpg' ); ?>');background-size:cover;background-position:center;"></div>
+                <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" target="_blank" rel="noopener" class="slide__photo-link">
+                    <div class="photo-slot photo-hero-1 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'voodoo-hero.jpg' ); ?>');background-size:cover;background-position:center;"></div>
                 </a>
             </div>
             <div class="slide__overlay"></div>
             <div class="slide__content">
                 <span class="slide__tag">▸ MAIN EVENT</span>
-                <h1 class="slide__title">REVOLUTION<br><span class="slide__title-accent">ON THE RIVER</span></h1>
-                <p class="slide__copy">The frontier explodes back onto the Northshore. <strong>Double K</strong> defends the FAW Heavyweight Championship in the biggest showdown of the year.</p>
+                <h1 class="slide__title">VOODOO<br><span class="slide__title-accent">NIGHTS</span></h1>
+                <p class="slide__copy">The FAW Halloween Showdown. The frontier turns dark this October — <strong>get your tickets before they vanish.</strong></p>
                 <div class="slide__meta">
-                    <div class="slide__meta-item"><span class="slide__meta-k">DATE</span><span class="slide__meta-v">Aug 15, 2026</span></div>
+                    <div class="slide__meta-item"><span class="slide__meta-k">EVENT</span><span class="slide__meta-v">Halloween Showdown</span></div>
                     <div class="slide__meta-item"><span class="slide__meta-k">VENUE</span><span class="slide__meta-v">Covington Country Club</span></div>
-                    <div class="slide__meta-item"><span class="slide__meta-k">FROM</span><span class="slide__meta-v">$13.67</span></div>
                 </div>
                 <div class="slide__cta">
-                    <a href="https://revolution-on-the-river.eventbrite.com" class="btn btn--primary" target="_blank" rel="noopener">Get Tickets →</a>
+                    <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" class="btn btn--primary" target="_blank" rel="noopener">Get Tickets →</a>
                     <a href="<?php echo esc_url( home_url( '/#gallery' ) ); ?>" class="btn btn--ghost">▶ See the Action</a>
                 </div>
             </div>
@@ -43,7 +42,7 @@ get_header();
         <article class="slide" style="--accent:#f5c542">
             <div class="slide__bg slide__bg-b"></div>
             <div class="slide__photo-frame">
-                <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="slide__photo-link">
+                <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" target="_blank" rel="noopener" class="slide__photo-link">
                     <div class="photo-slot photo-hero-2 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'double-k.webp' ); ?>');background-size:cover;background-position:center top;"></div>
                 </a>
             </div>
@@ -53,7 +52,7 @@ get_header();
                 <h1 class="slide__title">DOUBLE<br><span class="slide__title-accent">K</span></h1>
                 <p class="slide__copy">The FAW Heavyweight Champion. A powerhouse competitor who claimed the gold at the Crucible tournament.</p>
                 <div class="slide__cta">
-                    <a href="https://revolution-on-the-river.eventbrite.com" class="btn btn--primary" target="_blank" rel="noopener">Get Tickets →</a>
+                    <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" class="btn btn--primary" target="_blank" rel="noopener">Get Tickets →</a>
                     <a href="<?php echo esc_url( home_url( '/#roster' ) ); ?>" class="btn btn--ghost">View Full Roster</a>
                 </div>
             </div>
@@ -62,7 +61,7 @@ get_header();
         <article class="slide" style="--accent:#dc2626">
             <div class="slide__bg slide__bg-c"></div>
             <div class="slide__photo-frame">
-                <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="slide__photo-link">
+                <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" target="_blank" rel="noopener" class="slide__photo-link">
                     <div class="photo-slot photo-hero-3 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'big-kon.webp' ); ?>');background-size:cover;background-position:center top;"></div>
                 </a>
             </div>
@@ -70,9 +69,9 @@ get_header();
             <div class="slide__content">
                 <span class="slide__tag">▸ THE CHALLENGER</span>
                 <h1 class="slide__title">BIG<br><span class="slide__title-accent">KON</span></h1>
-                <p class="slide__copy">The challenger steps up. <strong>Big Kon</strong> looks to dethrone Double K and take the FAW Heavyweight Championship at Revolution on the River.</p>
+                <p class="slide__copy">The challenger steps up. <strong>Big Kon</strong> looks to dethrone Double K and take the FAW Heavyweight Championship at Voodoo Nights.</p>
                 <div class="slide__cta">
-                    <a href="https://revolution-on-the-river.eventbrite.com" class="btn btn--primary" target="_blank" rel="noopener">Get Tickets →</a>
+                    <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" class="btn btn--primary" target="_blank" rel="noopener">Get Tickets →</a>
                     <a href="<?php echo esc_url( home_url( '/#roster' ) ); ?>" class="btn btn--ghost">View Full Roster</a>
                 </div>
             </div>
@@ -92,44 +91,15 @@ get_header();
 <div class="ticker-strip" aria-hidden="true">
     <div class="ticker-strip__track">
         <span class="ticker-strip__item">▸ LIVE FROM COVINGTON, LOUISIANA</span><span class="ticker-strip__sep">/</span>
-        <span class="ticker-strip__item">REVOLUTION ON THE RIVER — AUG 15, 2026</span><span class="ticker-strip__sep">/</span>
+        <span class="ticker-strip__item">VOODOO NIGHTS — HALLOWEEN SHOWDOWN — TICKETS ON SALE NOW</span><span class="ticker-strip__sep">/</span>
         <span class="ticker-strip__item">TICKETS ON SALE NOW</span><span class="ticker-strip__sep">/</span>
         <span class="ticker-strip__item">NEW MERCH DROPS AT EVERY SHOW</span><span class="ticker-strip__sep">/</span>
         <span class="ticker-strip__item">▸ LIVE FROM COVINGTON, LOUISIANA</span><span class="ticker-strip__sep">/</span>
-        <span class="ticker-strip__item">REVOLUTION ON THE RIVER — AUG 15, 2026</span><span class="ticker-strip__sep">/</span>
+        <span class="ticker-strip__item">VOODOO NIGHTS — HALLOWEEN SHOWDOWN — TICKETS ON SALE NOW</span><span class="ticker-strip__sep">/</span>
         <span class="ticker-strip__item">TICKETS ON SALE NOW</span><span class="ticker-strip__sep">/</span>
         <span class="ticker-strip__item">NEW MERCH DROPS AT EVERY SHOW</span><span class="ticker-strip__sep">/</span>
     </div>
 </div>
-
-<!-- ============ MATCH CARDS — REVOLUTION ON THE RIVER ============ -->
-<section class="match-cards-section" id="matchcards">
-    <div class="section-head">
-        <span class="kicker">▸ REVOLUTION ON THE RIVER · AUG 15 · 2026</span>
-        <h2 class="section-title">THE <span class="hl">MATCH CARD</span></h2>
-        <p class="section-sub">The full card for the biggest FAW event of the year.</p>
-    </div>
-    <div class="match-cards__grid">
-        <div class="match-card fade-in-img" data-match="0" style="background-image:url('<?php echo esc_url( $img_uri . 'match-1.jpg' ); ?>');cursor:pointer;"></div>
-        <div class="match-card fade-in-img" data-match="1" style="background-image:url('<?php echo esc_url( $img_uri . 'match-2.jpg' ); ?>');cursor:pointer;"></div>
-        <div class="match-card fade-in-img" data-match="2" style="background-image:url('<?php echo esc_url( $img_uri . 'match-3.jpg' ); ?>');cursor:pointer;"></div>
-        <div class="match-card fade-in-img" data-match="3" style="background-image:url('<?php echo esc_url( $img_uri . 'match-4.jpg' ); ?>');cursor:pointer;"></div>
-        <div class="match-card fade-in-img" data-match="4" style="background-image:url('<?php echo esc_url( $img_uri . 'match-5.jpg' ); ?>');cursor:pointer;"></div>
-        <div class="match-card fade-in-img" data-match="5" style="background-image:url('<?php echo esc_url( $img_uri . 'rev-hero.jpg' ); ?>');cursor:pointer;"></div>
-    </div>
-    <p class="match-cards__more">More matches to be announced soon</p>
-    <script>window.FAW_MATCHES = [
-        '<?php echo esc_js( $img_uri . 'match-1.jpg' ); ?>',
-        '<?php echo esc_js( $img_uri . 'match-2.jpg' ); ?>',
-        '<?php echo esc_js( $img_uri . 'match-3.jpg' ); ?>',
-        '<?php echo esc_js( $img_uri . 'match-4.jpg' ); ?>',
-        '<?php echo esc_js( $img_uri . 'match-5.jpg' ); ?>',
-        '<?php echo esc_js( $img_uri . 'rev-hero.jpg' ); ?>'
-    ];</script>
-    <div class="match-cards__cta">
-        <a href="https://revolution-on-the-river.eventbrite.com" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Get Tickets →</a>
-    </div>
-</section>
 
 <!-- ============ ROSTER COVERFLOW ============ -->
 <section class="coverflow-section" id="roster">
@@ -163,16 +133,25 @@ get_header();
     </div>
     <div class="h-carousel h-carousel--center" id="eventsCarousel">
         <article class="event-card event-card--feature">
-            <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="event-card__photo event-card__photo--poster event-card__photo--link"><div class="photo-slot photo-event-1 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'rev-hero.jpg' ); ?>');background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#050103;"></div><span class="event-card__badge">● SELLING FAST</span></a>
+            <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" target="_blank" rel="noopener" class="event-card__photo event-card__photo--poster event-card__photo--link"><div class="photo-slot photo-event-1 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'voodoo-hero.jpg' ); ?>');background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#050103;"></div><span class="event-card__badge">● SELLING FAST</span></a>
             <div class="event-card__body">
-                <span class="event-card__date">SAT · AUG 15 · 2026 · 5:00 PM</span>
-                <h3>Revolution on the River</h3>
-                <p>Double K defends the FAW Heavyweight Championship. Covington Country Club.</p>
-                <div class="event-card__foot"><span class="event-card__price">From $13.67</span><a href="https://revolution-on-the-river.eventbrite.com" class="btn btn--primary btn--sm" target="_blank" rel="noopener">Tickets →</a></div>
+                <span class="event-card__date">HALLOWEEN SHOWDOWN</span>
+                <h3>Voodoo Nights</h3>
+                <p>The FAW Halloween Showdown descends on the Covington Country Club. Don't miss it.</p>
+                <div class="event-card__foot"><span class="event-card__price">Tickets Available</span><a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" class="btn btn--primary btn--sm" target="_blank" rel="noopener">Tickets →</a></div>
             </div>
         </article>
         <article class="event-card">
-            <a href="https://revolution-on-the-river.eventbrite.com" target="_blank" rel="noopener" class="event-card__photo event-card__photo--poster event-card__photo--link"><div class="photo-slot photo-event-2 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'event-crucible.jpg' ); ?>');background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#050103;"></div><span class="event-card__badge event-card__badge--replay">▣ PAST EVENT</span></a>
+            <div class="event-card__photo event-card__photo--poster"><div class="photo-slot photo-event-2 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'rev-hero.jpg' ); ?>');background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#050103;"></div><span class="event-card__badge event-card__badge--replay">▣ PAST EVENT</span></div>
+            <div class="event-card__body">
+                <span class="event-card__date">AUG 15 · 2026 · PAST EVENT</span>
+                <h3>Revolution on the River</h3>
+                <p>Double K defended the FAW Heavyweight Championship at the Covington Country Club.</p>
+                <div class="event-card__foot"><span class="event-card__price">Archive</span><a href="<?php echo esc_url( home_url( '/#gallery' ) ); ?>" class="btn btn--ghost btn--sm">View Photos →</a></div>
+            </div>
+        </article>
+        <article class="event-card">
+            <div class="event-card__photo event-card__photo--poster"><div class="photo-slot photo-event-3 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'event-crucible.jpg' ); ?>');background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#050103;"></div><span class="event-card__badge event-card__badge--replay">▣ PAST EVENT</span></div>
             <div class="event-card__body">
                 <span class="event-card__date">JUN 26 · 2026 · PAST EVENT</span>
                 <h3>Crucible</h3>
@@ -358,7 +337,7 @@ window.FAW_GALLERY = [
         <div class="full-bleed-section__content">
             <span class="kicker">▸ LATEST</span>
             <h2 class="section-title">FAW <span class="hl">NEWS</span></h2>
-            <p class="full-bleed-section__copy">Double K defends the gold at Revolution on the River — what's expected to be the biggest crowd in Frontier history.</p>
+            <p class="full-bleed-section__copy">Double K defends the gold at Voodoo Nights — the FAW Halloween Showdown.</p>
             <a href="https://www.instagram.com/frontierallstarwrestling/" class="btn btn--ghost" target="_blank" rel="noopener">Read More on Instagram →</a>
         </div>
     </div>
