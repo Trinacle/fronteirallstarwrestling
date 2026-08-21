@@ -58,6 +58,82 @@ get_header();
             </div>
         </article>
 
+        <article class="slide" style="--accent:#d4af37">
+            <div class="slide__bg slide__bg-c"></div>
+            <div class="slide__photo-frame">
+                <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" target="_blank" rel="noopener" class="slide__photo-link">
+                    <div class="photo-slot fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'agballah-oba-zo.webp' ); ?>');background-size:cover;background-position:center top;"></div>
+                </a>
+            </div>
+            <div class="slide__overlay"></div>
+            <div class="slide__content">
+                <span class="slide__tag">▸ TAG TEAM</span>
+                <h1 class="slide__title">PRINCE AGBALLAH<br><span class="slide__title-accent">&amp; GENERAL OBA ZO</span></h1>
+                <p class="slide__copy">A royal tag team alliance of dominance arrives at Voodoo Nights.</p>
+                <div class="slide__cta">
+                    <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" class="btn btn--primary" target="_blank" rel="noopener">Get Tickets →</a>
+                    <a href="<?php echo esc_url( home_url( '/#roster' ) ); ?>" class="btn btn--ghost">View Full Roster</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="slide" style="--accent:#2563eb">
+            <div class="slide__bg slide__bg-c"></div>
+            <div class="slide__photo-frame">
+                <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" target="_blank" rel="noopener" class="slide__photo-link">
+                    <div class="photo-slot fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'jake-logan.webp' ); ?>');background-size:cover;background-position:center top;"></div>
+                </a>
+            </div>
+            <div class="slide__overlay"></div>
+            <div class="slide__content">
+                <span class="slide__tag">▸ NEW ARRIVAL</span>
+                <h1 class="slide__title">JAKE<br><span class="slide__title-accent">LOGAN</span></h1>
+                <p class="slide__copy">A rising competitor making his mark on the FAW frontier at Voodoo Nights.</p>
+                <div class="slide__cta">
+                    <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" class="btn btn--primary" target="_blank" rel="noopener">Get Tickets →</a>
+                    <a href="<?php echo esc_url( home_url( '/#roster' ) ); ?>" class="btn btn--ghost">View Full Roster</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="slide" style="--accent:#16a34a">
+            <div class="slide__bg slide__bg-c"></div>
+            <div class="slide__photo-frame">
+                <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" target="_blank" rel="noopener" class="slide__photo-link">
+                    <div class="photo-slot fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'josh-woods.webp' ); ?>');background-size:cover;background-position:center top;"></div>
+                </a>
+            </div>
+            <div class="slide__overlay"></div>
+            <div class="slide__content">
+                <span class="slide__tag">▸ NEW ARRIVAL</span>
+                <h1 class="slide__title">JOSH<br><span class="slide__title-accent">WOODS</span></h1>
+                <p class="slide__copy">Technical precision meets raw intensity. Josh Woods debuts at Voodoo Nights.</p>
+                <div class="slide__cta">
+                    <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" class="btn btn--primary" target="_blank" rel="noopener">Get Tickets →</a>
+                    <a href="<?php echo esc_url( home_url( '/#roster' ) ); ?>" class="btn btn--ghost">View Full Roster</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="slide" style="--accent:#f97316">
+            <div class="slide__bg slide__bg-c"></div>
+            <div class="slide__photo-frame">
+                <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" target="_blank" rel="noopener" class="slide__photo-link">
+                    <div class="photo-slot fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'da-russell-twins.webp' ); ?>');background-size:cover;background-position:center top;"></div>
+                </a>
+            </div>
+            <div class="slide__overlay"></div>
+            <div class="slide__content">
+                <span class="slide__tag">▸ TAG TEAM</span>
+                <h1 class="slide__title">DA RUSSELL<br><span class="slide__title-accent">TWINS</span></h1>
+                <p class="slide__copy">Twin destruction — double the trouble for anyone in the ring at Voodoo Nights.</p>
+                <div class="slide__cta">
+                    <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" class="btn btn--primary" target="_blank" rel="noopener">Get Tickets →</a>
+                    <a href="<?php echo esc_url( home_url( '/#roster' ) ); ?>" class="btn btn--ghost">View Full Roster</a>
+                </div>
+            </div>
+        </article>
+
         <article class="slide" style="--accent:#dc2626">
             <div class="slide__bg slide__bg-c"></div>
             <div class="slide__photo-frame">
