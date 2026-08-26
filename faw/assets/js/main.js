@@ -152,7 +152,6 @@
     { name: 'Prince Agballah & General Oba Zo', initials: 'AO', tags: ['tag'], color: '#d4af37', glow: 'rgba(212,175,55,0.3)', img: 'img/agballah-oba-zo.webp', bio: 'A royal tag team alliance of dominance.' },
     { name: 'Jake Logan', initials: 'JL', tags: [], color: '#2563eb', glow: 'rgba(37,99,235,0.28)', img: 'img/jake-logan.webp', bio: 'A rising competitor making his mark.' },
     { name: 'Josh Woods', initials: 'JW', tags: [], color: '#16a34a', glow: 'rgba(22,163,74,0.28)', img: 'img/josh-woods.webp', bio: 'Technical precision meets raw intensity.' },
-    { name: 'Da Russell Twins', initials: 'RT', tags: ['tag'], color: '#f97316', glow: 'rgba(249,115,22,0.28)', img: 'img/da-russell-twins.webp', bio: 'Twin destruction — double the trouble for anyone in the ring.' },
     { name: 'Juice Man', initials: 'JM', tags: [], color: '#ea580c', glow: 'rgba(234,88,12,0.28)', img: 'img/juice-man.webp', bio: 'Brings the juice every time he steps in the ring.' },
     { name: 'Beautiful Bobby', initials: 'BB', tags: [], color: '#ec4899', glow: 'rgba(236,72,153,0.28)', img: 'img/beautiful-bobby.webp', bio: 'Pure style and pure skill in the ring.' },
     { name: 'Grappler III', initials: 'G3', tags: [], color: '#0891b2', glow: 'rgba(8,145,178,0.28)', img: 'img/grappler-iii.webp', bio: 'Third generation grappler with technical pedigree.' },
