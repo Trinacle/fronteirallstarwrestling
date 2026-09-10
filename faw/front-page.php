@@ -235,20 +235,21 @@ get_header();
     </div>
 </section>
 
-<!-- ============ PHOTO GALLERY — 2-ROW GRID + LIGHTBOX ============ -->
+<!-- ============ PHOTO GALLERY — GRID + LIGHTBOX ============ -->
 <section class="h-section" id="gallery">
     <div class="section-head">
         <span class="kicker">FROM THE RING</span>
         <h2 class="section-title">EVENT <span class="hl">GALLERY</span></h2>
-        <p class="section-sub">The action, the crowd, the chaos. Click any photo to view full size.</p>
+        <p class="section-sub">Revolution on the River · 8.15.26 · Covington Country Club. Click any photo to view full size.</p>
     </div>
     <div class="gallery-grid" id="galleryGrid">
         <?php
-        $gallery_imgs = array( 'c005', 'c010', 'c012', 'c015', 'c020', 'c022', 'c025', 'c030', 'c035', 'c040', 'c045', 'c048', 'c050', 'c055', 'c060', 'c065', 'c070', 'c075', 'c080', 'c085', 'c090', 'c095', 'c100' );
-        foreach ( $gallery_imgs as $i => $g ) :
+        $gallery_count = 30;
+        for ( $i = 1; $i <= $gallery_count; $i++ ) :
+            $n = sprintf( '%02d', $i );
         ?>
-        <div class="gallery-thumb fade-in-img" data-lightbox="<?php echo esc_attr( $i ); ?>" style="background-image:url('<?php echo esc_url( $img_uri . 'gallery/' . $g . '-md.jpg' ); ?>');background-size:cover;background-position:center;"></div>
-        <?php endforeach; ?>
+        <div class="gallery-thumb fade-in-img" data-lightbox="<?php echo esc_attr( $i - 1 ); ?>" style="background-image:url('<?php echo esc_url( $img_uri . 'rivor/rivor-' . $n . '-md.jpg' ); ?>');background-size:cover;background-position:center;"></div>
+        <?php endfor; ?>
     </div>
 </section>
 
@@ -261,9 +262,14 @@ get_header();
     <div class="lightbox__counter" id="lightboxCounter"></div>
 </div>
 <script>
-// Build lightbox image array from the gallery data
+// Lightbox images: 30 Revolution photos + 23 Crucible archive photos
 window.FAW_GALLERY = [
-    <?php foreach ( $gallery_imgs as $g ) : ?>
+    <?php for ( $i = 1; $i <= 30; $i++ ) : $n = sprintf( '%02d', $i ); ?>
+    '<?php echo esc_js( $img_uri . 'rivor/rivor-' . $n . '-lg.jpg' ); ?>',
+    <?php endfor; ?>
+    <?php
+    $archive = array( 'c005', 'c012', 'c025', 'c035', 'c048', 'c060', 'c075', 'c090', 'c095', 'c100' );
+    foreach ( $archive as $g ) : ?>
     '<?php echo esc_js( $img_uri . 'gallery/' . $g . '-lg.jpg' ); ?>',
     <?php endforeach; ?>
 ];
