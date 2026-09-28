@@ -3,9 +3,10 @@
 ## Project Overview
 **Client:** Frontier All-Star Wrestling (frontierallstarwrestling.com)
 **Type:** WordPress child theme (child of Astra)
-**Current Version:** 2.4.1
+**Current Version:** 2.9.1 (LIVE on server)
 **Location on server:** `~/public_html/website_7ddacff9/wp-content/themes/faw/`
 **Local repo:** `C:\Users\kevin\ZCodeProject\faw-repo\`
+**Last updated:** 2026-09-10
 
 ---
 
@@ -20,7 +21,7 @@
 | **cPanel** | `https://sh00751.bluehost.com:2083` |
 | **WP path** | `~/public_html/website_7ddacff9/` |
 | **Hosting** | Bluehost (LiteSpeed cache, cPanel) |
-| **CDN/WAF** | Cloudflare (blocks direct curl/REST from server-to-server) |
+| **CDN/WAF** | Cloudflare (blocks direct curl/REST server-to-server — verify via WP-CLI, not curl) |
 | **WP-CLI** | Available at `/usr/local/bin/wp` |
 
 ### SSH test command:
@@ -38,19 +39,25 @@ ssh -i ~/.ssh/faw_deploy -o IdentitiesOnly=yes slquxqmy@sh00751.bluehost.com "wh
 | **Branch** | `main` |
 | **Local clone** | `C:\Users\kevin\ZCodeProject\faw-repo\` |
 
+### ⚠️ Git credential gotcha (hit 2026-09-10, fixed)
+Windows Credential Manager had a repo-pinned credential for the `kevin-treman` account (no Trinacle access) → push 403. Fixed by deleting it. If it recurs:
+```powershell
+cmdkey /delete:LegacyGeneric:target=git:https://github.com/Trinacle/fronteirallstarwrestling.git
+```
+
 ### GitHub Actions Auto-Deploy
-- Workflow file: `faw/.github/workflows/deploy.yml`
-- **NOT yet active** — needs 3 GitHub secrets added:
+- Workflow: `faw/.github/workflows/deploy.yml`
+- **NOT yet active** — needs 3 secrets in repo Settings → Secrets → Actions:
   - `FAW_SSH_HOST` = `sh00751.bluehost.com`
   - `FAW_SSH_USER` = `slquxqmy`
   - `FAW_SSH_KEY` = full contents of `~/.ssh/faw_deploy` private key
-- Once secrets added, every `git push origin main` auto-deploys via rsync
+- Once added, every push to main auto-deploys via rsync + cache flush
 
 ---
 
 ## Manual Deploy Process (current method)
 
-Since rsync is not installed on Windows, use tar+scp:
+rsync is not on Windows — use tar+scp:
 
 ```bash
 cd C:\Users\kevin\ZCodeProject\faw-repo
@@ -60,12 +67,8 @@ scp -i ~/.ssh/faw_deploy -o IdentitiesOnly=yes -o StrictHostKeyChecking=no /tmp/
 ssh -i ~/.ssh/faw_deploy -o IdentitiesOnly=yes -o StrictHostKeyChecking=no slquxqmy@sh00751.bluehost.com "cd ~/public_html/website_7ddacff9/wp-content/themes/faw && tar xzf /tmp/faw-theme.tar.gz && rm /tmp/faw-theme.tar.gz && find . -type d -exec chmod 755 {} \; && find . -type f -exec chmod 644 {} \; && cd ~/public_html/website_7ddacff9 && wp cache flush && echo 'DEPLOYED'"
 ```
 
-### IMPORTANT: Always bump version before deploy
-In `faw/functions.php`:
-```php
-define( 'FAW_VERSION', '2.4.2' ); // increment on EVERY change
-```
-This cache-busts the CSS/JS so browsers fetch the new version.
+### ALWAYS bump version before deploy
+In `faw/functions.php`: `define( 'FAW_VERSION', 'X.Y.Z' );` — cache-busts CSS/JS. Every deploy needs this.
 
 ---
 
@@ -73,108 +76,108 @@ This cache-busts the CSS/JS so browsers fetch the new version.
 
 ```
 faw/
-├── style.css              ← Theme header (child of Astra, Template: astra)
-├── functions.php          ← Setup, enqueue, AJAX handlers, CPTs, roster data
+├── style.css              ← Theme header (Template: astra)
+├── functions.php          ← Setup, enqueue, AJAX forms→CPTs, roster data, Meta Pixel
 ├── header.php             ← Dynamic bg, center-split nav, mobile tickets button
-├── footer.php             ← CTA band, giant wordmark, SVG social icons
-├── front-page.php         ← Full homepage (ALL sections)
+├── footer.php             ← American-flag CTA band, giant wordmark, SVG social icons
+├── front-page.php         ← Full homepage (all sections)
 ├── assets/
-│   ├── css/styles.css     ← Full design system (~550 lines, dark red palette)
+│   ├── css/styles.css     ← Design system (dark red #8b0a1e, polished v2.9.0)
 │   ├── js/main.js         ← Hero carousel, coverflow, carousels, lightbox, AJAX forms
-│   └── img/               ← Wrestler photos (.webp), gallery, match cards, logo
-│       ├── gallery/       ← 46 optimized Crucible event photos (lg + md sizes)
-│       ├── logo.webp/png  ← Optimized FAW logo (48KB webp)
-│       ├── wrestler-bg.webp ← Red background for coverflow cards
-│       ├── rev-hero.jpg   ← Revolution on the River poster
-│       ├── event-crucible.jpg ← Crucible poster
-│       └── match-1..5.jpg ← Match card images
-└── .github/workflows/deploy.yml ← Auto-deploy (needs secrets)
+│   └── img/
+│       ├── rivor/         ← 30 Revolution 8.15.26 photos (lg 1200 + md 800) — THE GALLERY
+│       ├── gallery/       ← 10 Crucible archive photos (lg + md)
+│       ├── wrestlers      ← *.webp 819px (~50KB each)
+│       ├── wrestler-bg.webp ← Red card background for coverflow
+│       ├── voodoo-hero.jpg / event-crucible.jpg / rev-hero.jpg ← event posters
+│       └── logo.webp/png  ← Optimized FAW logo
+└── .github/workflows/deploy.yml
 ```
 
 ---
 
-## Homepage Sections (top to bottom)
+## Current Homepage Sections (top to bottom)
 
-1. **Hero carousel** — 3 slides (Revolution on the River, Double K champion, Big Kon challenger). Autoplay + arrows + dots + swipe. Photos clickable to Eventbrite.
-2. **Ticker strip** — Scrolling announcements
-3. **Match cards** — 6 match card images in a grid, click opens lightbox
-4. **Roster coverflow** — 3D carousel of 16 wrestlers, starts at Double K (index 3). Click opens bio modal. Has filters (All / Heavyweight Champion / Tag Teams).
-5. **Events** — Horizontal carousel. Revolution on the River (live) + Crucible (past event). Posters clickable.
-6. **Sponsors wall** — 5 real sponsors + "Your Brand Here"
-7. **Gallery** — 2-row grid of 23 Crucible photos, click opens lightbox with keyboard/touch nav
-8. **Merch** — 4 "Coming Soon" cards
-9. **Instagram** — 6 clickable photo cards linking to real IG posts
-10. **Talent** — Full-bleed section with application form (AJAX → CPT)
-11. **Sponsors CTA** — Full-bleed section with inquiry form (AJAX → CPT)
-12. **News** — Full-bleed photo with headline
-13. **Newsletter** — Email signup (AJAX)
-14. **Contact** — Contact form (AJAX → sends to info@fronteirallstarwrestling.com)
-15. **Footer** — American flag themed CTA band, giant "FAW" wordmark, social icons, links
+1. **Hero carousel** — 6 slides: **Voodoo Nights (main event, purple/orange theme)** → Double K (champ) → Prince Agballah & Gen. Oba Zo → Jake Logan → Josh Woods → Da Russell Twins. Autoplay+arrows+dots+swipe; photos link to Eventbrite. (Big Kon slide removed by request.)
+2. **Ticker strip** — "VOODOO NIGHTS — HALLOWEEN SHOWDOWN — TICKETS ON SALE NOW" (pauses on hover)
+3. **Roster coverflow** — 3D carousel, 21 wrestlers, starts at **Double K (index 3)**. Filters: All / Heavyweight Champion / Tag Teams. Red bg cards + gold shimmer champ badge. Join the Roster button.
+4. **Events** — 3 cards: **Voodoo Nights (LIVE, SELLING FAST)** → Revolution on the River (PAST) → Crucible (PAST). Poster-style 3:4 photos, clickable to Eventbrite.
+5. **Sponsors wall** — Wa Wagyu, Justin "Hitman" Ard, Blunt Wraps USA, Hot Honey Nickys, Mandes Restaurant + "Your Brand Here"
+6. **Gallery** — 30 Revolution photos, 5-col grid, click → lightbox (30 Riv + 10 Crucible = 40 images, keyboard/touch nav)
+7. **Merch** — 4 "Coming Soon" cards
+8. **Instagram** — 6 clickable cards → real IG posts
+9. **Talent** — full-bleed, application form (AJAX → faw_application CPT)
+10. **Sponsors CTA** — full-bleed, inquiry form (AJAX → faw_inquiry CPT); visible on mobile
+11. **News** — full-bleed "Voodoo Nights" promo
+12. **Newsletter** — AJAX signup
+13. **Contact** — form emails info@frontierallstarwrestling.com + stores as CPT
+14. **Footer** — American flag CTA band (navy/red split, white button, striped borders), giant "FAW" wordmark, social icons
+
+---
+
+## Current Event
+
+**Voodoo Nights — FAW Halloween Showdown — Oct 17, 2026** @ Covington Country Club
+**Eventbrite (ALL ticket links site-wide):** https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true
+
+Past events: Revolution on the River (Aug 15, 2026), Crucible (Jun 26, 2026 — debut).
 
 ---
 
 ## Design System
 
-### Colors (CSS custom properties in styles.css)
 ```css
---void: #020103;        /* near-black base */
---ink: #040104;
---panel: #0a0306;
---crimson: #8b0a1e;     /* dark red primary */
+--crimson: #8b0a1e;      /* dark red primary (buttons/bg) */
 --crimson-bright: #c81030;
 --crimson-deep: #5e0612;
---gold: #f5c542;        /* champion accent */
---amber: #ffb020;
---text: #ffffff;        /* pure white text */
---text-dim: #c8c8cc;
+--void: #020103;          /* near-black base */
+--gold: #f5c542;          /* champion accent */
+--text: #ffffff;          /* pure white */
+.hl { color: #e8163f; }   /* text accents — brighter for readability on black */
 ```
-
-### Fonts
-- **Archivo Black** — display headings
-- **Oswald** — nav, labels, buttons
-- **Inter** — body text
-
-### Key CSS patterns
-- `.hl` = color `#8b0a1e` (was `#ff2e4c`, changed per client request)
-- `.hl-white` = pure white (used in "THE ROSTER" title)
-- `.fade-in-img` = images fade in on load (JS adds `.is-loaded`)
-- `.btn--primary` = red gradient with pulse animation on nav tickets button
+Fonts: Archivo Black (display), Oswald (nav/labels), Inter (body). Voodoo hero slide uses its own purple/orange bg (`.slide__bg-voodoo`).
 
 ---
 
-## Roster Data (IMPORTANT)
+## Roster (21 wrestlers — defined in TWO places, keep in sync!)
 
-Roster is defined in **TWO places** — keep them in sync:
-1. `functions.php` → `faw_get_roster()` (PHP, passed to JS via `wp_localize_script`)
-2. `assets/js/main.js` → `WRESTLERS` array (JS fallback if PHP data fails)
+1. `functions.php` → `faw_get_roster()` (source of truth, passed to JS via wp_localize_script)
+2. `assets/js/main.js` → `WRESTLERS` array (fallback)
 
-### Current roster (16 wrestlers, in order):
-1. Phantom
-2. Mustang Mike
-3. Big Kon
-4. **Double K** (champion — coverflow starts here, index 3)
-5. Juice Man
-6. Beautiful Bobby
-7. Grappler III
-8. Purple Haze
-9. Jaxson Strong
-10. Rene Boucher
-11. Izaiah Zane
-12. Cowboy Cliff Rogers
-13. Ashton Blake
-14. Seymore Money
-15. Shawn Crow
-16. Rika & Gluttony (tag team)
+**Order:** Phantom → Mustang Mike → Big Kon → **Double K (champion, coverflow starts here, index 3)** → Prince Agballah & General Oba Zo (tag) → Jake Logan → Josh Woods → Juice Man → Beautiful Bobby → Grappler III → Purple Haze → Jaxson Strong → Rene Boucher → Izaiah Zane → Cowboy Cliff Rogers → Ashton Blake → Seymore Money → Shawn Crow → Rika & Gluttony (tag) → Da Russell Twins (tag)
 
-### Removed wrestlers (NOT on roster):
-Xander Gold, Antonio Bronson, Cody Hawkins, Chris Black, Thaddeus Collins, Suge Whyte
+**Data rules (client-mandated):** NO role labels, NO hometown, NO finishing moves, NO height/weight. Only: name, initials, photo, bio, champion flag (Double K only), color/glow, tags (champion/tag only).
 
-### Data rules (per client):
-- ❌ NO role labels ("Brawler", "High Flyer", etc.)
-- ❌ NO hometown / "where from"
-- ❌ NO finishing move names
-- ❌ NO height/weight stats
-- ✅ Only: name, initials, photo, bio, champion tag (Double K only), color/glow
+**Removed (NOT roster):** Xander Gold, Antonio Bronson, Cody Hawkins, Chris Black, Thaddeus Collins, Suge Whyte.
+
+**Adding a wrestler:** drop PNG in `assets/img/`, optimize to 819px webp (~50KB, PIL quality=82), add matching entries to BOTH arrays, bump version, deploy.
+
+---
+
+## Meta Pixel (installed v2.8.0)
+
+In `functions.php` via `add_action('wp_head', ..., 1)`:
+- **Pixel ID 3055922027946414** — PageView on all pages
+- Document-level capture listener fires **InitiateCheckout** on ANY `eventbrite.com` link click (content: Voodoo Nights, ID 1998518316082)
+- Verified server-side (init/listener/noscript all render in wp_head)
+- GA4 (GT-TQTV6XST) runs alongside, untouched
+- **Domain verification pending:** client to send the `facebook-domain-verification` meta tag from Meta Business Settings → Brand Safety → Domains; drop it into the same wp_head block when it arrives
+- If a CMP is ever added, pixel must be gated behind marketing consent
+
+---
+
+## Photo Pipeline (Revolution on the River shoot)
+
+**Source:** 5 ZIPs from Sherri Lynn Photography (22.8GB, 818 photos, 22–41MB each) in `~/Downloads`.
+**Processed:** streaming extract (never exceeded 15GB free disk) → perceptual-hash dedup (dHash, hamming ≤6 pass 1 / ≤8 cluster pass 2) → **730 unique winners**.
+
+| Output | Location | Contents |
+|---|---|---|
+| Website gallery | `faw/assets/img/rivor/` | 30 curated (evenly spread across event), lg 1200 + md 800 |
+| Social drip | `C:\Users\kevin\ZCodeProject\faw-photos\social-drip\` | 730 × 1080px IG-ready + POSTING-CALENDAR.md + SOCIAL-HANDOFF.md |
+| Pipeline scripts | `C:\Users\kevin\ZCodeProject\faw-photos\` | process_parts.py, finalize.py, make_calendar.py |
+
+**Social drip (managed by separate "FAW Wrestling Social" chat):** 72 posts, 2/day, Sep 12 → Oct 17, countdown captions from Oct 7. Handoff: `social-drip/SOCIAL-HANDOFF.md`.
 
 ---
 
@@ -182,68 +185,38 @@ Xander Gold, Antonio Bronson, Cody Hawkins, Chris Black, Thaddeus Collins, Suge 
 
 | Form | AJAX action | CPT | Notes |
 |---|---|---|---|
-| Talent application | `faw_talent` | `faw_application` | Stores name, email, role, experience, message |
-| Sponsor inquiry | `faw_sponsor` | `faw_inquiry` | Stores name, company, email, message |
-| Contact | `faw_contact` | `faw_inquiry` | Also sends email to info@fronteirallstarwrestling.com |
-| Newsletter | `faw_newsletter` | (AJAX response only) | Wire to Mailchimp later |
+| Talent application | `faw_talent` | `faw_application` | name, email, role, experience, message |
+| Sponsor inquiry | `faw_sponsor` | `faw_inquiry` | name, company, email, message |
+| Contact | `faw_contact` | `faw_inquiry` | ALSO emails info@frontierallstarwrestling.com |
+| Newsletter | `faw_newsletter` | — (response only) | wire to Mailchimp eventually |
 
-CPTs visible in WP Admin sidebar (Talent Applications, Inquiries).
-
----
-
-## Key Things to Watch
-
-### 1. Cloudflare blocks server-to-server requests
-- `curl` and `wp_remote_get()` to the live domain get a 403 "Just a moment..." challenge
-- Always test from the server using WP-CLI or check error logs
-- To verify changes: hard-refresh browser (Ctrl+Shift+R) or add `?nc=TIMESTAMP`
-
-### 2. LiteSpeed cache
-- Always run `wp cache flush` after deploying
-- May also need `?litespeed_purgeall=1` on the URL
-
-### 3. Roster data in two places
-- If you add/remove/reorder wrestlers, update BOTH `functions.php` and `main.js`
-- The `cfActive` start index in main.js must match Double K's position (currently 3)
-
-### 4. Image optimization
-- All wrestler photos should be `.webp` at 819px wide, ~50KB
-- Use: `python -c "from PIL import Image; ..."` to optimize
-- Gallery images use `-lg.jpg` (1200w) for lightbox and `-md.jpg` (800w) for thumbnails
-
-### 5. WordPress homepage setting
-- `show_on_front` = `page`, `page_on_front` = `14` (page titled "Frontier All-Star Wrestling")
-- `front-page.php` template handles the homepage automatically
+CPTs visible in WP Admin: "Talent Applications", "Inquiries".
 
 ---
 
-## Recent Change History
+## Key Gotchas
+
+1. **Cloudflare** blocks server-to-server HTTP — verify via WP-CLI (`wp eval`) or error logs, never curl to the live domain. Browser verification needs hard refresh (Ctrl+Shift+R).
+2. **LiteSpeed cache** — always `wp cache flush` after deploy.
+3. **Roster in two places** — functions.php + main.js must stay identical; `cfActive` start index (currently 3) must match Double K's position.
+4. **WP homepage** — `show_on_front=page`, `page_on_front=14`; `front-page.php` renders automatically.
+5. **Images must be optimized** — wrestler webp 819px ~50KB; gallery lg/md variants. Never ship 30MB originals.
+6. **Yoast warning** in error log (class-wpseo-options.php foreach) is pre-existing plugin noise, not ours.
+
+---
+
+## Version History (recent)
 
 | Version | Changes |
 |---|---|
-| 1.0.0 | Initial theme build + deploy |
-| 1.1.0 | Removed Phantom slide, TBA events, fake sponsors; added real sponsors + Coming Soon merch |
-| 1.2.0 | Optimized logo (48KB webp), wired into header/footer |
-| 1.2.1 | Bigger header + footer logos |
-| 1.3.0 | Centered events carousel, removed THIS IS FRONTIER section, contact form emails info@ |
-| 1.4.0 | Revolution hero image + match card section (6 cards) |
-| 1.5.0 | Match cards + hero link to Eventbrite, event images use real posters |
-| 1.6.0 | Taller event posters, SELLING FAST/PAST EVENT labels, #8b0a1e replaces #ff2e4c |
-| 1.6.1 | Hero accent #8b0a1e, reduced hero height |
-| 1.7.0 | Removed 6 non-roster wrestlers, stripped all incorrect fields |
-| 1.8.0 | Added Big Kon, Purple Haze, Beautiful Bobby, Grappler III, Jaxson Strong; Kris Keith → Double K |
-| 1.8.1 | Added Juice Man + Rene Boucher |
-| 1.9.0 | All hero photos clickable, Big Kon challenger slide |
-| 1.9.1 | "More matches to be announced soon" text |
-| 1.9.2 | Moved new wrestlers behind Double K |
-| 2.0.0 | Gallery: 2-row grid + lightbox with all 23 photos |
-| 2.1.0 | Wrestler bg image on cards, carousel full width + bigger |
-| 2.1.1 | Fixed wrestler layer order (wrestler on top, bg behind) |
-| 2.2.0 | Double K to spot 4, new Grappler III photo |
-| 2.2.1 | Reordered: Juice Man after Double K, Purple Haze after Grappler III |
-| 2.3.0 | Clickable posters, match card lightbox, mobile hero/events fixes |
-| 2.4.0 | Hero overlay fix, American flag CTA, sponsor form on mobile, mobile optimization |
-| 2.4.1 | Tickets button in mobile header |
+| 2.5.1 | Voodoo Nights replaces Revolution as main event; match cards removed; Revolution → past event; all ticket links → new Eventbrite |
+| 2.6.0 | Voodoo hero purple/orange theme |
+| 2.7.0 | +Prince Agballah & Gen. Oba Zo (tag), Jake Logan, Josh Woods + hero slides |
+| 2.7.1 | Big Kon removed from hero rotation |
+| 2.8.0 | **Meta Pixel installed** (PageView + InitiateCheckout) |
+| 2.8.1 | Removed duplicate Da Russell Twins entry |
+| 2.9.0 | Frontend polish: readable .hl accents (#e8163f), kicker lines, nav underlines, champ shimmer, gallery zoom icons, lightbox entrance, focus rings, custom scrollbar, content-visibility perf |
+| 2.9.1 | **Gallery replaced with 30 Revolution on the River photos** (from 730-photo dedup pipeline); trimmed unused Crucible thumbs |
 
 ---
 
@@ -252,34 +225,15 @@ CPTs visible in WP Admin sidebar (Talent Applications, Inquiries).
 | Resource | URL |
 |---|---|
 | Live site | https://frontierallstarwrestling.com |
-| Eventbrite (Revolution on the River) | https://revolution-on-the-river.eventbrite.com |
-| Eventbrite (all events) | https://www.eventbrite.com/o/frontier-all-star-wrestling-121196022836 |
+| Voodoo Nights Eventbrite | https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true |
+| Eventbrite org (all events) | https://www.eventbrite.com/o/frontier-all-star-wrestling-121196022836 |
 | Facebook | https://www.facebook.com/frontierallstarwrestling/ |
 | Instagram | https://www.instagram.com/frontierallstarwrestling/ |
 | GitHub repo | https://github.com/Trinacle/fronteirallstarwrestling.git |
-| Original WP site (for reference) | https://frontierallstarwrestling.com/wp-content/uploads/ |
+| Social drip handoff | C:\Users\kevin\ZCodeProject\faw-photos\social-drip\SOCIAL-HANDOFF.md |
 
----
-
-## WP Application Password (for REST API if needed)
+## WP Application Password (REST API if ever needed)
 ```
 aAof DHkH G5LH UKYo RW9b cqSq
 ```
-Note: Cloudflare blocks direct REST API access from server-to-server. Use WP-CLI via SSH instead.
-
----
-
-## How to Add a New Wrestler
-
-1. Drop the photo PNG in `faw/assets/img/`
-2. Optimize it:
-```bash
-cd faw/assets/img
-python -c "from PIL import Image; im=Image.open('NAME.png'); r=819/im.size[0]; im.resize((819,int(im.size[1]*r)),Image.LANCZOS).save('slug-name.webp','WEBP',quality=82,method=6)"
-rm NAME.png
-```
-3. Add to BOTH roster arrays (functions.php `faw_get_roster()` + main.js `WRESTLERS`):
-```php
-array( 'name' => 'Wrestler Name', 'initials' => 'WN', 'tags' => array(), 'color' => '#HEXCOLOR', 'glow' => 'rgba(R,G,B,0.28)', 'img' => FAW_URI . '/assets/img/slug-name.webp', 'bio' => 'Short bio.' ),
-```
-4. Bump `FAW_VERSION`, commit, deploy.
+(Cloudflare blocks direct REST from servers — prefer WP-CLI via SSH.)
