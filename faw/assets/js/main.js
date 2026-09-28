@@ -347,6 +347,9 @@
     document.body.style.overflow = '';
   }
 
+  // public API — gallery page (and future surfaces) can open/close the lightbox
+  window.FAW_LIGHTBOX = { open: openLightbox, close: closeLightbox };
+
   // wire up gallery thumbnails
   var thumbs = document.querySelectorAll('.gallery-thumb[data-lightbox]');
   for (var t = 0; t < thumbs.length; t++) {

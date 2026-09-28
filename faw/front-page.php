@@ -204,7 +204,7 @@ get_header();
                 <span class="event-card__date">AUG 15 · 2026 · PAST EVENT</span>
                 <h3>Revolution on the River</h3>
                 <p>Double K defended the FAW Heavyweight Championship at the Covington Country Club.</p>
-                <div class="event-card__foot"><span class="event-card__price">Archive</span><a href="<?php echo esc_url( home_url( '/#gallery' ) ); ?>" class="btn btn--ghost btn--sm">View Photos →</a></div>
+                <div class="event-card__foot"><span class="event-card__price">Archive</span><a href="<?php echo esc_url( home_url( '/gallery/?event=rivor' ) ); ?>" class="btn btn--ghost btn--sm">View Photos →</a></div>
             </div>
         </article>
         <article class="event-card">
@@ -213,7 +213,7 @@ get_header();
                 <span class="event-card__date">JUN 26 · 2026 · PAST EVENT</span>
                 <h3>Crucible</h3>
                 <p>The night FAW launched. Phantom vs. Steve O'Malley headlined a sold-out Dungeon Bar on June 26, 2026.</p>
-                <div class="event-card__foot"><span class="event-card__price">Archive</span><a href="<?php echo esc_url( home_url( '/#gallery' ) ); ?>" class="btn btn--ghost btn--sm">View Photos →</a></div>
+                <div class="event-card__foot"><span class="event-card__price">Archive</span><a href="<?php echo esc_url( home_url( '/gallery/?event=crucible' ) ); ?>" class="btn btn--ghost btn--sm">View Photos →</a></div>
             </div>
         </article>
     </div>
@@ -250,6 +250,9 @@ get_header();
         ?>
         <div class="gallery-thumb fade-in-img" data-lightbox="<?php echo esc_attr( $i - 1 ); ?>" style="background-image:url('<?php echo esc_url( $img_uri . 'rivor/rivor-' . $n . '-md.jpg' ); ?>');background-size:cover;background-position:center;"></div>
         <?php endfor; ?>
+    </div>
+    <div class="match-cards__cta" style="margin-top:40px;">
+        <a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>" class="btn btn--primary btn--lg">View Full Gallery →</a>
     </div>
 </section>
 

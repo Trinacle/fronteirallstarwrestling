@@ -619,3 +619,24 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ============================================================
+   GALLERY PAGE (/gallery/)
+   ============================================================ */
+.gpage { padding: 60px 0 100px; min-height: 60vh; }
+.gpage__head { text-align: center; max-width: 820px; margin: 0 auto 40px; padding: 0 40px; }
+.gpage__title { font-family: var(--ff-display); font-size: clamp(2.8rem, 7vw, 5.5rem); line-height: 0.92; text-transform: uppercase; }
+.gpage__sub { color: var(--text-dim); font-size: 1.15rem; margin-top: 14px; }
+.gpage__filters { display: flex; flex-direction: column; gap: 12px; align-items: center; margin-bottom: 36px; padding: 0 20px; }
+.gpage__fgroup { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; }
+.gpage__flabel { font-family: var(--ff-head); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.18em; color: var(--text-faint); margin-right: 6px; }
+.gpage__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
+.gpage__grid .gallery-thumb { aspect-ratio: 3/2; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--line); background: var(--panel); transition: transform 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s; }
+.gpage__grid .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gpage__grid .gallery-thumb:hover { transform: scale(1.03); border-color: var(--crimson-bright); box-shadow: 0 14px 36px -10px rgba(200,16,48,0.4); z-index: 2; }
+.gpage__empty { text-align: center; color: var(--text-dim); padding: 60px 0; font-family: var(--ff-head); letter-spacing: 0.06em; }
+.gpage__more { text-align: center; margin-top: 44px; display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.gpage__count { font-family: var(--ff-head); font-size: 0.85rem; letter-spacing: 0.08em; color: var(--text-faint); text-transform: uppercase; }
+@media (max-width: 1024px) { .gpage__grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 820px) { .gpage__grid { grid-template-columns: repeat(2, 1fr); padding: 0 20px; } .gpage__head { padding: 0 20px; } }
+@media (max-width: 480px) { .gpage__grid { gap: 8px; } }

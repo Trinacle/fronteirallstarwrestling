@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FAW_VERSION', '2.9.1' );
+define( 'FAW_VERSION', '2.10.0' );
 define( 'FAW_DIR', get_stylesheet_directory() );
 define( 'FAW_URI', get_stylesheet_directory_uri() );
 
@@ -30,6 +30,11 @@ function faw_enqueue_assets() {
 
     // Main JS
     wp_enqueue_script( 'faw-main', FAW_URI . '/assets/js/main.js', array(), FAW_VERSION, true );
+
+    // Gallery page JS (only on the /gallery/ page)
+    if ( is_page( 'gallery' ) ) {
+        wp_enqueue_script( 'faw-gallery-page', FAW_URI . '/assets/js/gallery-page.js', array( 'faw-main' ), FAW_VERSION, true );
+    }
 
     // Pass AJAX URL + roster data to JS
     wp_localize_script( 'faw-main', 'FAW_DATA', array(
