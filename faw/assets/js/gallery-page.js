@@ -5,7 +5,33 @@
   var grid = document.getElementById('gpageGrid');
   if (!GP || !grid || !window.FAW_LIGHTBOX) return;
 
-  var state = { event: 'all', date: 'all', visible: 24 };
+  var state = { event: 'all', date: 'all', sort: 'newest', visible: GP.perPage };
+
+  // photos are indexed chronologically per event in FAW_GALLERY order;
+  // build the display order per sort (events by date, in-event stays chronological)
+  var order = (function () {
+    var keys = Object.keys(GP.meta).sort(function (a, b) {
+      return GP.meta[a].dateKey < GP.meta[b].dateKey ? -1 : 1; // oldest event first
+    });
+    var newestFirst = keys.slice().reverse();
+    var seq = (state.sort === 'newest') ? newestFirst : keys;
+    var out = [];
+    seq.forEach(function (ev) {
+      for (var i = GP.meta[ev].from; i <= GP.meta[ev].to; i++) out.push(i);
+    });
+    return out;
+  })();
+
+  function rebuildOrder() {
+    var keys = Object.keys(GP.meta).sort(function (a, b) {
+      return GP.meta[a].dateKey < GP.meta[b].dateKey ? -1 : 1;
+    });
+    var seq = (state.sort === 'newest') ? keys.slice().reverse() : keys;
+    order.length = 0;
+    seq.forEach(function (ev) {
+      for (var i = GP.meta[ev].from; i <= GP.meta[ev].to; i++) order.push(i);
+    });
+  }
 
   function passes(p) {
     if (state.event !== 'all' && p.event !== state.event) return false;
@@ -19,10 +45,12 @@
   function render() {
     grid.innerHTML = '';
     var shown = 0, total = 0;
-    for (var i = 0; i < GP.photos.length && shown < state.visible; i++) {
+    for (var o = 0; o < order.length; o++) {
+      var i = order[o];
       var p = GP.photos[i];
       if (!passes(p)) continue;
       total++;
+      if (shown >= state.visible) continue;
       var d = document.createElement('div');
       d.className = 'gallery-thumb';
       d.setAttribute('data-lightbox', i);
@@ -36,10 +64,6 @@
       d.appendChild(img);
       grid.appendChild(d);
       shown++;
-    }
-    // count all passing for label + more button
-    for (var j = i; j < GP.photos.length; j++) {
-      if (passes(GP.photos[j])) total++;
     }
     document.getElementById('gpageEmpty').hidden = total > 0;
     document.getElementById('gpageMoreWrap').style.display = shown < total ? '' : 'none';
@@ -61,12 +85,14 @@
       el.querySelectorAll('.chip').forEach(function (c) { c.classList.remove('is-active'); });
       b.classList.add('is-active');
       state[key] = b.getAttribute('data-' + key);
+      if (key === 'sort') rebuildOrder();
       state.visible = GP.perPage;
       render();
     });
   }
   wire('gfEvent', 'event');
   wire('gfDate', 'date');
+  wire('gfSort', 'sort');
 
   // load more
   document.getElementById('gpageMore').addEventListener('click', function () {

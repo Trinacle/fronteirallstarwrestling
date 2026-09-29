@@ -64,6 +64,11 @@ get_header();
             <button class="chip" data-date="2026-06-26">Jun 26, 2026</button>
             <button class="chip" data-date="2026-08-15">Aug 15, 2026</button>
         </div>
+        <div class="gpage__fgroup" id="gfSort">
+            <span class="gpage__flabel">SORT</span>
+            <button class="chip is-active" data-sort="newest">Newest First</button>
+            <button class="chip" data-sort="oldest">Oldest First</button>
+        </div>
     </div>
 
     <div class="gpage__grid" id="gpageGrid"></div>
@@ -92,7 +97,7 @@ window.FAW_GALLERY = <?php echo wp_json_encode( array_column( $photos, 'full' ) 
 window.FAW_GP = {
     photos: <?php echo wp_json_encode( $photos ); ?>,
     meta: <?php echo wp_json_encode( $meta ); ?>,
-    perPage: 24
+    perPage: 48
 };
 </script>
 
