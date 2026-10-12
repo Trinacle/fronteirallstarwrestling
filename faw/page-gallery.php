@@ -90,6 +90,7 @@ get_header();
     <button class="lightbox__arrow lightbox__arrow--next" id="lightboxNext" aria-label="Next">›</button>
     <div class="lightbox__img" id="lightboxImg"></div>
     <div class="lightbox__counter" id="lightboxCounter"></div>
+    <button class="lightbox__download" id="lightboxDownload" aria-label="Download photo">↓ Download</button>
 </div>
 
 <script>

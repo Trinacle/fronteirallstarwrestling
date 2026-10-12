@@ -360,6 +360,17 @@
   // lightbox controls
   var lbClose = $('lightboxClose'), lbPrev = $('lightboxPrev'), lbNext = $('lightboxNext');
   if (lbClose) lbClose.addEventListener('click', closeLightbox);
+  var lbDl = $('lightboxDownload');
+  if (lbDl) lbDl.addEventListener('click', function () {
+    var url = GALLERY[lbIndex] || '';
+    if (!url) return;
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'faw-' + url.split('/').pop().split('?')[0];
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  });
   if (lbPrev) lbPrev.addEventListener('click', function () { lbIndex--; showLightboxImage(); });
   if (lbNext) lbNext.addEventListener('click', function () { lbIndex++; showLightboxImage(); });
   if (lightbox) lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
