@@ -647,3 +647,5 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .lightbox__download { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 100px; background: rgba(255,255,255,0.16); color: #fff; font-family: var(--ff-head); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; transition: background 0.2s, transform 0.2s var(--ease); box-shadow: 0 6px 20px rgba(0,0,0,0.45); }
 .lightbox__download:hover { background: var(--crimson-bright); transform: translateY(-2px); }
 @media (max-width: 480px) { .lightbox__bar { bottom: 16px; gap: 12px; } .lightbox__download { padding: 10px 20px; font-size: 0.75rem; } }
+
+.slide__bg-winter { background: radial-gradient(circle at 75% 25%, rgba(56,189,248,0.3), transparent 55%), radial-gradient(circle at 20% 70%, rgba(30,64,175,0.45), transparent 55%), linear-gradient(135deg, #0a1628, #050a18, #050103); }

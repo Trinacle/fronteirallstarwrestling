@@ -16,7 +16,32 @@ get_header();
 <!-- ============ HERO (full-screen) ============ -->
 <section class="hero" id="home">
     <div class="hero__slides" id="heroSlides">
-        <article class="slide slide--active" style="--accent:#ff8c00">
+
+        <article class="slide slide--active" style="--accent:#38bdf8">
+            <div class="slide__bg slide__bg-winter"></div>
+            <div class="slide__photo-frame">
+                <a href="https://www.eventbrite.com/o/frontier-all-star-wrestling-121196022836" target="_blank" rel="noopener" class="slide__photo-link">
+                    <div class="photo-slot photo-hero-1 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'winter-warfare.jpg' ); ?>');background-size:cover;background-position:center;"></div>
+                </a>
+            </div>
+            <div class="slide__overlay"></div>
+            <div class="slide__content">
+                <span class="slide__tag">&#9656; NEXT EVENT</span>
+                <h1 class="slide__title">WINTER<br><span class="slide__title-accent">WARFARE</span></h1>
+                <p class="slide__copy">FAW storms the Pelican Park Brown Gymnasium in Mandeville this December. <strong>Saturday, December 12, 2026.</strong> Do not miss it.</p>
+                <div class="slide__meta">
+                    <div class="slide__meta-item"><span class="slide__meta-k">DATE</span><span class="slide__meta-v">Sat, Dec 12, 2026</span></div>
+                    <div class="slide__meta-item"><span class="slide__meta-k">VENUE</span><span class="slide__meta-v">Pelican Park Brown Gymnasium</span></div>
+                    <div class="slide__meta-item"><span class="slide__meta-k">WHERE</span><span class="slide__meta-v">63350 Pelican Dr, Mandeville</span></div>
+                </div>
+                <div class="slide__cta">
+                    <a href="https://www.eventbrite.com/o/frontier-all-star-wrestling-121196022836" class="btn btn--primary" target="_blank" rel="noopener">Get Tickets &#8594;</a>
+                    <a href="<?php echo esc_url( home_url( '/#roster' ) ); ?>" class="btn btn--ghost">View Roster</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="slide" style="--accent:#ff8c00">
             <div class="slide__bg slide__bg-voodoo"></div>
             <div class="slide__photo-frame">
                 <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" target="_blank" rel="noopener" class="slide__photo-link">
@@ -148,11 +173,11 @@ get_header();
 <div class="ticker-strip" aria-hidden="true">
     <div class="ticker-strip__track">
         <span class="ticker-strip__item">▸ LIVE FROM COVINGTON, LOUISIANA</span><span class="ticker-strip__sep">/</span>
-        <span class="ticker-strip__item">VOODOO NIGHTS — HALLOWEEN SHOWDOWN — TICKETS ON SALE NOW</span><span class="ticker-strip__sep">/</span>
+        <span class="ticker-strip__item">WINTER WARFARE · SAT DEC 12 · PELICAN PARK BROWN GYM · MANDEVILLE</span><span class="ticker-strip__sep">/</span>
         <span class="ticker-strip__item">TICKETS ON SALE NOW</span><span class="ticker-strip__sep">/</span>
         <span class="ticker-strip__item">NEW MERCH DROPS AT EVERY SHOW</span><span class="ticker-strip__sep">/</span>
         <span class="ticker-strip__item">▸ LIVE FROM COVINGTON, LOUISIANA</span><span class="ticker-strip__sep">/</span>
-        <span class="ticker-strip__item">VOODOO NIGHTS — HALLOWEEN SHOWDOWN — TICKETS ON SALE NOW</span><span class="ticker-strip__sep">/</span>
+        <span class="ticker-strip__item">WINTER WARFARE · SAT DEC 12 · PELICAN PARK BROWN GYM · MANDEVILLE</span><span class="ticker-strip__sep">/</span>
         <span class="ticker-strip__item">TICKETS ON SALE NOW</span><span class="ticker-strip__sep">/</span>
         <span class="ticker-strip__item">NEW MERCH DROPS AT EVERY SHOW</span><span class="ticker-strip__sep">/</span>
     </div>
@@ -190,12 +215,21 @@ get_header();
     </div>
     <div class="h-carousel h-carousel--center" id="eventsCarousel">
         <article class="event-card event-card--feature">
-            <a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" target="_blank" rel="noopener" class="event-card__photo event-card__photo--poster event-card__photo--link"><div class="photo-slot photo-event-1 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'voodoo-hero.jpg' ); ?>');background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#050103;"></div><span class="event-card__badge">● SELLING FAST</span></a>
+            <a href="https://www.eventbrite.com/o/frontier-all-star-wrestling-121196022836" target="_blank" rel="noopener" class="event-card__photo event-card__photo--poster event-card__photo--link"><div class="photo-slot photo-event-1 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'winter-warfare.jpg' ); ?>');background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#050103;"></div><span class="event-card__badge">● NEXT EVENT</span></a>
             <div class="event-card__body">
-                <span class="event-card__date">HALLOWEEN SHOWDOWN</span>
+                <span class="event-card__date">SAT · DEC 12 · 2026</span>
+                <h3>Winter Warfare</h3>
+                <p>FAW storms the Pelican Park Brown Gymnasium. 63350 Pelican Drive, Mandeville, LA.</p>
+                <div class="event-card__foot"><span class="event-card__price">Dec 12, 2026</span><a href="https://www.eventbrite.com/o/frontier-all-star-wrestling-121196022836" class="btn btn--primary btn--sm" target="_blank" rel="noopener">Tickets →</a></div>
+            </div>
+        </article>
+        <article class="event-card">
+            <div class="event-card__photo event-card__photo--poster"><div class="photo-slot photo-event-2 fade-in-img" style="background-image:url('<?php echo esc_url( $img_uri . 'voodoo-hero.jpg' ); ?>');background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#050103;"></div><span class="event-card__badge event-card__badge--replay">▣ PAST EVENT</span></div>
+            <div class="event-card__body">
+                <span class="event-card__date">OCT 17 · 2026 · PAST EVENT</span>
                 <h3>Voodoo Nights</h3>
-                <p>The FAW Halloween Showdown descends on the Covington Country Club. Don't miss it.</p>
-                <div class="event-card__foot"><span class="event-card__price">Tickets Available</span><a href="https://www.eventbrite.com/e/voodoo-nights-faw-wrestling-halloween-showdown-tickets-1998518316082?keep_tld=true" class="btn btn--primary btn--sm" target="_blank" rel="noopener">Tickets →</a></div>
+                <p>The FAW Halloween Showdown hit the Covington Country Club. What a night.</p>
+                <div class="event-card__foot"><span class="event-card__price">Archive</span><a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>" class="btn btn--ghost btn--sm">View Photos →</a></div>
             </div>
         </article>
         <article class="event-card">
