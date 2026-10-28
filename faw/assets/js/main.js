@@ -164,7 +164,13 @@
     { name: 'Seymore Money', initials: 'SM', tags: [], color: '#10b981', glow: 'rgba(16,185,129,0.28)', img: 'img/seymore-money.webp', bio: 'Flashy, confident, and always got a trick up his sleeve.' },
     { name: 'Shawn Crow', initials: 'SC', tags: [], color: '#6366f1', glow: 'rgba(99,102,241,0.28)', img: 'img/shawn-crow.webp', bio: 'Dark, relentless, and unpredictable.' },
     { name: 'Rika & Gluttony', initials: 'RG', tags: ['tag'], color: '#ec4899', glow: 'rgba(236,72,153,0.28)', img: 'img/rika-gluttony.webp', bio: "A chaotic tag team combining Rika Wildlee's wild energy with The Big Top Butcher's raw power." },
-    { name: 'Da Russell Twins', initials: 'RT', tags: ['tag'], color: '#14b8a6', glow: 'rgba(20,184,166,0.28)', img: 'img/da-russell-twins.webp', bio: 'A double-trouble tag team bringing twin synergy and coordinated chaos to the FAW ring.' }
+    { name: 'Da Russell Twins', initials: 'RT', tags: ['tag'], color: '#14b8a6', glow: 'rgba(20,184,166,0.28)', img: 'img/da-russell-twins.webp', bio: 'A double-trouble tag team bringing twin synergy and coordinated chaos to the FAW ring.' },
+    { name: 'Tino Valentino', initials: 'TV', tags: [], color: '#e11d48', glow: 'rgba(225,29,72,0.28)', img: 'img/tino-valentino.webp', bio: 'Style, swagger, and a mean streak.' },
+    { name: 'Jayson Land', initials: 'JL', tags: [], color: '#4f46e5', glow: 'rgba(79,70,229,0.28)', img: 'img/jayson-land.webp', bio: 'A rising star with something to prove.' },
+    { name: 'Manimal', initials: 'MA', tags: [], color: '#65a30d', glow: 'rgba(101,163,13,0.28)', img: 'img/manimal.webp', bio: 'Half man, all animal.' },
+    { name: 'Cajun Outlaws', initials: 'CO', tags: ['tag'], color: '#c2410c', glow: 'rgba(194,65,12,0.28)', img: 'img/cajun-outlaws.webp', bio: 'An outlaw tag team with nothing to lose.' },
+    { name: 'Sideshow Freaks', initials: 'SF', tags: ['tag'], color: '#7e22ce', glow: 'rgba(126,34,206,0.28)', img: 'img/sideshow-freaks.webp', bio: 'The circus comes to town and nobody leaves the same.' },
+    { name: 'Magnum CA', initials: 'MC', tags: [], color: '#0d9488', glow: 'rgba(13,148,136,0.28)', img: 'img/magnum-ca.webp', bio: 'A straight shooter with championship intentions.' }
   ];
 
   var cfStage = $('coverflowStage');

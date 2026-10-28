@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FAW_VERSION', '2.11.2' );
+define( 'FAW_VERSION', '2.12.0' );
 define( 'FAW_DIR', get_stylesheet_directory() );
 define( 'FAW_URI', get_stylesheet_directory_uri() );
 
@@ -304,6 +304,12 @@ function faw_get_roster() {
         array( 'name' => 'Shawn Crow', 'initials' => 'SC', 'tags' => array(), 'color' => '#6366f1', 'glow' => 'rgba(99,102,241,0.28)', 'img' => FAW_URI . '/assets/img/shawn-crow.webp', 'bio' => 'Dark, relentless, and unpredictable.' ),
         array( 'name' => 'Rika & Gluttony', 'initials' => 'RG', 'tags' => array( 'tag' ), 'color' => '#ec4899', 'glow' => 'rgba(236,72,153,0.28)', 'img' => FAW_URI . '/assets/img/rika-gluttony.webp', 'bio' => "A chaotic tag team combining Rika Wildlee's wild energy with The Big Top Butcher's raw power." ),
         array( 'name' => 'Da Russell Twins', 'initials' => 'RT', 'tags' => array( 'tag' ), 'color' => '#14b8a6', 'glow' => 'rgba(20,184,166,0.28)', 'img' => FAW_URI . '/assets/img/da-russell-twins.webp', 'bio' => 'A double-trouble tag team bringing twin synergy and coordinated chaos to the FAW ring.' ),
+        array( 'name' => 'Tino Valentino', 'initials' => 'TV', 'tags' => array(), 'color' => '#e11d48', 'glow' => 'rgba(225,29,72,0.28)', 'img' => FAW_URI . '/assets/img/tino-valentino.webp', 'bio' => 'Style, swagger, and a mean streak.' ),
+        array( 'name' => 'Jayson Land', 'initials' => 'JL', 'tags' => array(), 'color' => '#4f46e5', 'glow' => 'rgba(79,70,229,0.28)', 'img' => FAW_URI . '/assets/img/jayson-land.webp', 'bio' => 'A rising star with something to prove.' ),
+        array( 'name' => 'Manimal', 'initials' => 'MA', 'tags' => array(), 'color' => '#65a30d', 'glow' => 'rgba(101,163,13,0.28)', 'img' => FAW_URI . '/assets/img/manimal.webp', 'bio' => 'Half man, all animal.' ),
+        array( 'name' => 'Cajun Outlaws', 'initials' => 'CO', 'tags' => array( 'tag' ), 'color' => '#c2410c', 'glow' => 'rgba(194,65,12,0.28)', 'img' => FAW_URI . '/assets/img/cajun-outlaws.webp', 'bio' => 'An outlaw tag team with nothing to lose.' ),
+        array( 'name' => 'Sideshow Freaks', 'initials' => 'SF', 'tags' => array( 'tag' ), 'color' => '#7e22ce', 'glow' => 'rgba(126,34,206,0.28)', 'img' => FAW_URI . '/assets/img/sideshow-freaks.webp', 'bio' => 'The circus comes to town and nobody leaves the same.' ),
+        array( 'name' => 'Magnum CA', 'initials' => 'MC', 'tags' => array(), 'color' => '#0d9488', 'glow' => 'rgba(13,148,136,0.28)', 'img' => FAW_URI . '/assets/img/magnum-ca.webp', 'bio' => 'A straight shooter with championship intentions.' ),
     );
     return $roster;
 }
