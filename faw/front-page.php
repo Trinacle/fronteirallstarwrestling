@@ -299,10 +299,12 @@ get_header();
     <div class="lightbox__bar">
       <span class="lightbox__counter" id="lightboxCounter"></span>
       <button class="lightbox__download" id="lightboxDownload" aria-label="Download photo">↓ Download</button>
+      <button class="lightbox__share" id="lightboxShare" aria-label="Share photo" aria-haspopup="true">→ Share</button>
     </div>
+    <div class="lightbox__tags" id="lightboxTags"></div>
 </div>
 <script>
-// Lightbox images: 30 Revolution photos + 23 Crucible archive photos
+// Lightbox images: 30 Revolution teasers (canonical riv-NNN) + 10 Crucible archive photos
 window.FAW_GALLERY = [
     <?php for ( $i = 1; $i <= 30; $i++ ) : $n = sprintf( '%02d', $i ); ?>
     '<?php echo esc_js( $img_uri . 'rivor/rivor-' . $n . '-lg.jpg' ); ?>',
@@ -311,6 +313,18 @@ window.FAW_GALLERY = [
     $archive = array( 'c005', 'c012', 'c025', 'c035', 'c048', 'c060', 'c075', 'c090', 'c095', 'c100' );
     foreach ( $archive as $g ) : ?>
     '<?php echo esc_js( $img_uri . 'gallery/' . $g . '-lg.jpg' ); ?>',
+    <?php endforeach; ?>
+];
+// Canonical IDs for share permalinks + tag chips.
+// Teaser N maps to riv-{(N-1)*24+1} (verified by perceptual hash 2026-10-29);
+// archive cNNN maps to cru-{NNN} (byte-identical files).
+<?php $faw_lb_tags = faw_all_photo_tags(); ?>
+window.FAW_LB_INFO = [
+    <?php for ( $i = 1; $i <= 30; $i++ ) : $faw_lb_base = 'riv-' . sprintf( '%03d', ( $i - 1 ) * 24 + 1 ); ?>
+    { base: '<?php echo esc_js( $faw_lb_base ); ?>', tags: <?php echo wp_json_encode( isset( $faw_lb_tags[ $faw_lb_base ] ) ? $faw_lb_tags[ $faw_lb_base ] : array() ); ?> },
+    <?php endfor; ?>
+    <?php foreach ( array( 'c005' => 'cru-005', 'c012' => 'cru-012', 'c025' => 'cru-025', 'c035' => 'cru-035', 'c048' => 'cru-048', 'c060' => 'cru-060', 'c075' => 'cru-075', 'c090' => 'cru-090', 'c095' => 'cru-095', 'c100' => 'cru-100' ) as $g => $faw_lb_base ) : ?>
+    { base: '<?php echo esc_js( $faw_lb_base ); ?>', tags: <?php echo wp_json_encode( isset( $faw_lb_tags[ $faw_lb_base ] ) ? $faw_lb_tags[ $faw_lb_base ] : array() ); ?> },
     <?php endforeach; ?>
 ];
 </script>

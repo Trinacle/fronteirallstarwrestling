@@ -1,11 +1,13 @@
-/* FAW Gallery Page — filter, lazy grid, load-more. Lightbox via main.js API. */
+/* FAW Gallery Page - filter, lazy grid, load-more. Lightbox via main.js API. */
 (function () {
   'use strict';
   var GP = window.FAW_GP;
   var grid = document.getElementById('gpageGrid');
   if (!GP || !grid || !window.FAW_LIGHTBOX) return;
 
-  var state = { event: 'all', date: 'all', sort: 'newest', visible: GP.perPage };
+  var state = { event: 'all', date: 'all', sort: 'newest', wrestler: 'all', visible: GP.perPage };
+  var ROSTER_BY_SLUG = {};
+  (GP.roster || []).forEach(function (r) { ROSTER_BY_SLUG[r.slug] = r; });
 
   // photos are indexed chronologically per event in FAW_GALLERY order;
   // build the display order per sort (events by date, in-event stays chronological)
@@ -39,6 +41,10 @@
       var m = GP.meta[p.event];
       if (!m || m.dateKey !== state.date) return false;
     }
+    if (state.wrestler !== 'all') {
+      var tags = p.tags || [];
+      if (tags.indexOf(state.wrestler) === -1) return false;
+    }
     return true;
   }
 
@@ -62,6 +68,13 @@
       img.width = 480;
       img.height = 320;
       d.appendChild(img);
+      if (p.tags && p.tags.length) {
+        var badge = document.createElement('span');
+        badge.className = 'gthumb__tag-badge';
+        badge.textContent = p.tags.length;
+        badge.title = p.tags.map(function (s) { return (ROSTER_BY_SLUG[s] || {}).name || s; }).join(', ');
+        d.appendChild(badge);
+      }
       grid.appendChild(d);
       shown++;
     }
@@ -79,6 +92,7 @@
   // filter chips
   function wire(group, key) {
     var el = document.getElementById(group);
+    if (!el) return;
     el.addEventListener('click', function (e) {
       var b = e.target.closest('.chip');
       if (!b) return;
@@ -93,6 +107,7 @@
   wire('gfEvent', 'event');
   wire('gfDate', 'date');
   wire('gfSort', 'sort');
+  wire('gfWrestler', 'wrestler');
 
   // load more
   document.getElementById('gpageMore').addEventListener('click', function () {
@@ -100,8 +115,9 @@
     render();
   });
 
-  // deep link: /gallery/?event=rivor or crucible
-  var q = new URLSearchParams(location.search).get('event');
+  // deep links: /gallery/?event=rivor|crucible and ?photo=riv-042
+  var params = new URLSearchParams(location.search);
+  var q = params.get('event');
   if (q === 'rivor' || q === 'crucible') {
     state.event = q;
     var evBtn = document.querySelector('#gfEvent .chip[data-event="' + q + '"]');
@@ -110,6 +126,23 @@
       evBtn.classList.add('is-active');
     }
   }
+  var pw = params.get('wrestler');
+  if (pw && ROSTER_BY_SLUG[pw]) {
+    state.wrestler = pw;
+    var pwBtn = document.querySelector('#gfWrestler .chip[data-wrestler="' + pw + '"]');
+    if (pwBtn) {
+      document.querySelectorAll('#gfWrestler .chip').forEach(function (c) { c.classList.remove('is-active'); });
+      pwBtn.classList.add('is-active');
+    }
+  }
 
   render();
+
+  // open a specific photo after render (?photo=riv-042)
+  var photoParam = params.get('photo');
+  if (photoParam && GP.photos) {
+    for (var pi = 0; pi < GP.photos.length; pi++) {
+      if (GP.photos[pi].base === photoParam) { window.FAW_LIGHTBOX.open(pi); break; }
+    }
+  }
 })();

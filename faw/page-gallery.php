@@ -17,6 +17,8 @@ require_once FAW_DIR . '/inc/gallery-data.php';
 $events    = faw_gallery_events();
 $uploads   = wp_upload_dir();
 $gal_base  = trailingslashit( $uploads['baseurl'] ) . 'faw-gallery/';
+$all_tags  = faw_all_photo_tags();
+$roster_idx = faw_roster_index();
 
 // Build the JS photo index (permanent global order: crucible then rivor).
 $photos = array();
@@ -29,6 +31,8 @@ foreach ( $events as $key => $ev ) {
             'full'  => $gal_base . $ev['dir'] . '/' . $f . '-full.jpg',
             'thumb' => $gal_base . $ev['dir'] . '/' . $f . '-thumb.jpg',
             'event' => $key,
+            'base'  => $f,
+            'tags'  => isset( $all_tags[ $f ] ) ? $all_tags[ $f ] : array(),
         );
         $idx++;
     }
@@ -69,6 +73,21 @@ get_header();
             <button class="chip is-active" data-sort="newest">Newest First</button>
             <button class="chip" data-sort="oldest">Oldest First</button>
         </div>
+        <div class="gpage__fgroup" id="gfWrestler">
+            <span class="gpage__flabel">WRESTLER</span>
+            <button class="chip is-active" data-wrestler="all">All Wrestlers</button>
+            <?php
+            $tagged_slugs = array();
+            foreach ( $all_tags as $bases ) {
+                foreach ( $bases as $s ) {
+                    if ( isset( $roster_idx[ $s ] ) ) $tagged_slugs[ $s ] = true;
+                }
+            }
+            foreach ( array_keys( $tagged_slugs ) as $ts ) :
+                $tw = faw_get_wrestler_by_slug( $ts ); ?>
+                <button class="chip" data-wrestler="<?php echo esc_attr( $ts ); ?>"><?php echo esc_html( $tw ? $tw['name'] : $ts ); ?></button>
+            <?php endforeach; ?>
+        </div>
     </div>
 
     <div class="gpage__grid" id="gpageGrid"></div>
@@ -92,14 +111,20 @@ get_header();
     <div class="lightbox__bar">
       <span class="lightbox__counter" id="lightboxCounter"></span>
       <button class="lightbox__download" id="lightboxDownload" aria-label="Download photo">↓ Download</button>
+      <button class="lightbox__share" id="lightboxShare" aria-label="Share photo" aria-haspopup="true">→ Share</button>
     </div>
+    <div class="lightbox__tags" id="lightboxTags"></div>
 </div>
 
 <script>
 window.FAW_GALLERY = <?php echo wp_json_encode( array_column( $photos, 'full' ) ); ?>;
+window.FAW_LB_INFO = <?php echo wp_json_encode( array_map( function ( $p ) {
+    return array( 'base' => $p['base'], 'tags' => $p['tags'] );
+}, $photos ) ); ?>;
 window.FAW_GP = {
     photos: <?php echo wp_json_encode( $photos ); ?>,
     meta: <?php echo wp_json_encode( $meta ); ?>,
+    roster: <?php echo wp_json_encode( array_values( $roster_idx ) ); ?>,
     perPage: 48
 };
 </script>

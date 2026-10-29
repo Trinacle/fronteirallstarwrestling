@@ -9,9 +9,12 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FAW_VERSION', '2.13.2' );
+define( 'FAW_VERSION', '2.14.0' );
 define( 'FAW_DIR', get_stylesheet_directory() );
 define( 'FAW_URI', get_stylesheet_directory_uri() );
+
+require_once FAW_DIR . '/inc/photo-tags.php';
+require_once FAW_DIR . '/inc/matches-data.php';
 
 /**
  * Enqueue styles + scripts
@@ -43,6 +46,7 @@ function faw_enqueue_assets() {
         'themeUri' => FAW_URI,
         'siteUrl'  => home_url( '/' ),
         'roster'   => faw_get_roster(),
+        'rosterUrl' => home_url( '/roster/' ),
     ) );
 }
 add_action( 'wp_enqueue_scripts', 'faw_enqueue_assets', 20 );
@@ -311,7 +315,383 @@ function faw_get_roster() {
         array( 'name' => 'Sideshow Freaks', 'initials' => 'SF', 'tags' => array( 'tag' ), 'color' => '#7e22ce', 'glow' => 'rgba(126,34,206,0.28)', 'img' => FAW_URI . '/assets/img/sideshow-freaks.webp', 'bio' => 'The circus comes to town and nobody leaves the same.' ),
         array( 'name' => 'Magnum CA', 'initials' => 'MC', 'tags' => array(), 'color' => '#0d9488', 'glow' => 'rgba(13,148,136,0.28)', 'img' => FAW_URI . '/assets/img/magnum-ca.webp', 'bio' => 'A straight shooter with championship intentions.' ),
     );
+
+    foreach ( $roster as $i => $w ) {
+        $roster[ $i ]['slug'] = faw_wrestler_slug( $w['name'] );
+    }
     return $roster;
+}
+
+/**
+ * Rewrites: /roster/{slug}/ -> wrestler profile pages
+ */
+function faw_register_rewrites() {
+    add_rewrite_rule( '^roster/([^/]+)/?$', 'index.php?faw_wrestler=$matches[1]', 'top' );
+    add_rewrite_rule( '^roster/?$', 'index.php?faw_wrestler=__index__', 'top' );
+}
+add_action( 'init', 'faw_register_rewrites' );
+
+function faw_query_vars( $vars ) {
+    $vars[] = 'faw_wrestler';
+    return $vars;
+}
+add_filter( 'query_vars', 'faw_query_vars' );
+
+function faw_profile_template( $template ) {
+    $slug = get_query_var( 'faw_wrestler' );
+    if ( '' === $slug ) {
+        return $template;
+    }
+    if ( '__index__' === $slug || ! faw_get_wrestler_by_slug( $slug ) ) {
+        wp_safe_redirect( home_url( '/#roster' ), 302 );
+        exit;
+    }
+    return locate_template( 'roster-profile.php' );
+}
+add_filter( 'template_include', 'faw_profile_template', 20 );
+
+/**
+ * Current photo deep link base (?photo=riv-042) if valid
+ */
+function faw_requested_photo_base() {
+    if ( empty( $_GET['photo'] ) ) {
+        return '';
+    }
+    $base = sanitize_key( wp_unslash( $_GET['photo'] ) );
+    if ( ! preg_match( '/^[a-z]+\-([0-9]+)$/', $base ) ) {
+        return '';
+    }
+    if ( ! function_exists( 'faw_photo_base_exists' ) ) {
+        require_once FAW_DIR . '/inc/photo-tags.php';
+    }
+    return faw_photo_base_exists( $base ) ? $base : '';
+}
+
+/**
+ * Photo URL helpers (uploads/faw-gallery)
+ */
+function faw_photo_url( $base, $size = 'full' ) {
+    if ( ! function_exists( 'faw_gallery_events' ) ) {
+        require_once FAW_DIR . '/inc/gallery-data.php';
+    }
+    foreach ( faw_gallery_events() as $ev ) {
+        if ( in_array( $base, $ev['files'], true ) ) {
+            $up = wp_upload_dir();
+            return trailingslashit( $up['baseurl'] ) . 'faw-gallery/' . $ev['dir'] . '/' . $base . '-' . $size . '.jpg';
+        }
+    }
+    return '';
+}
+
+/**
+ * OpenGraph for shared photo permalinks (works with or without Yoast)
+ */
+function faw_photo_og_title() {
+    $base = faw_requested_photo_base();
+    if ( ! $base ) {
+        return '';
+    }
+    $names = array();
+    $index = faw_roster_index();
+    foreach ( faw_get_photo_tags( $base ) as $slug ) {
+        if ( isset( $index[ $slug ] ) ) {
+            $names[] = $index[ $slug ]['name'];
+        }
+    }
+    $title = $names ? implode( ' · ', $names ) . ' - FAW Photo' : 'FAW Photo';
+    return $title . ' | Frontier All-Star Wrestling';
+}
+
+function faw_og_image_url() {
+    if ( is_front_page() ) {
+        return '';
+    }
+    if ( faw_requested_photo_base() ) {
+        return faw_photo_url( faw_requested_photo_base(), 'full' );
+    }
+    $slug = get_query_var( 'faw_wrestler' );
+    if ( $slug ) {
+        $w = faw_get_wrestler_by_slug( $slug );
+        if ( $w && ! empty( $w['img'] ) ) {
+            return $w['img'];
+        }
+    }
+    return '';
+}
+
+add_filter( 'wpseo_title', function ( $title ) {
+    $t = faw_photo_og_title();
+    if ( $t ) {
+        return $t;
+    }
+    $slug = get_query_var( 'faw_wrestler' );
+    if ( $slug ) {
+        $w = faw_get_wrestler_by_slug( $slug );
+        if ( $w ) {
+            return $w['name'] . ' - FAW Roster | Frontier All-Star Wrestling';
+        }
+    }
+    return $title;
+} );
+
+add_filter( 'wpseo_opengraph_image', function ( $image ) {
+    $img = faw_og_image_url();
+    return $img ? $img : $image;
+} );
+
+// Fallback OG tags if Yoast is not active
+add_action( 'wp_head', function () {
+    if ( defined( 'WPSEO_VERSION' ) ) {
+        return;
+    }
+    $img  = faw_og_image_url();
+    $t    = faw_photo_og_title();
+    $slug = get_query_var( 'faw_wrestler' );
+    if ( $slug && ! $t ) {
+        $w = faw_get_wrestler_by_slug( $slug );
+        $t = $w ? $w['name'] . ' - FAW Roster | Frontier All-Star Wrestling' : '';
+    }
+    if ( ! $img && ! $t ) {
+        return;
+    }
+    echo '<meta property="og:title" content="' . esc_attr( $t ?: get_bloginfo( 'name' ) ) . '" />' . "\n";
+    if ( $img ) {
+        echo '<meta property="og:image" content="' . esc_url( $img ) . '" />' . "\n";
+    }
+    echo '<meta property="og:type" content="website" />' . "\n";
+}, 5 );
+
+/**
+ * AJAX: save photo tags (admin only)
+ */
+function faw_admin_save_tags() {
+    check_ajax_referer( 'faw_nonce', 'nonce' );
+    if ( ! current_user_can( 'manage_options' ) ) {
+        wp_send_json_error( array( 'message' => 'Not allowed.' ), 403 );
+    }
+    $base = isset( $_POST['base'] ) ? sanitize_key( wp_unslash( $_POST['base'] ) ) : '';
+    if ( ! faw_photo_base_exists( $base ) ) {
+        wp_send_json_error( array( 'message' => 'Unknown photo.' ) );
+    }
+    $valid  = array_keys( faw_roster_index() );
+    $slugs  = array();
+    if ( isset( $_POST['slugs'] ) && is_array( $_POST['slugs'] ) ) {
+        foreach ( wp_unslash( $_POST['slugs'] ) as $s ) {
+            $s = sanitize_key( $s );
+            if ( in_array( $s, $valid, true ) ) {
+                $slugs[] = $s;
+            }
+        }
+    }
+    faw_set_photo_tags( $base, $slugs );
+    wp_send_json_success( array( 'message' => count( $slugs ) . ' tag(s) saved.', 'slugs' => $slugs ) );
+}
+add_action( 'wp_ajax_faw_admin_save_tags', 'faw_admin_save_tags' );
+
+/**
+ * Admin: Photo Tags screen
+ */
+function faw_register_photo_tags_admin() {
+    add_menu_page(
+        'Photo Tags',
+        'Photo Tags',
+        'manage_options',
+        'faw-photo-tags',
+        'faw_render_photo_tags_admin',
+        'dashicons-format-gallery',
+        26
+    );
+}
+add_action( 'admin_menu', 'faw_register_photo_tags_admin' );
+
+function faw_render_photo_tags_admin() {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        return;
+    }
+    if ( ! function_exists( 'faw_gallery_events' ) ) {
+        require_once FAW_DIR . '/inc/gallery-data.php';
+    }
+    $events = faw_gallery_events();
+    $up     = wp_upload_dir();
+    $base   = trailingslashit( $up['baseurl'] ) . 'faw-gallery/';
+    $tags   = faw_all_photo_tags();
+    $roster = faw_roster_index();
+    ?>
+    <div class="wrap" id="faw-pt-wrap">
+        <h1>FAW Photo Tags</h1>
+        <p>Click a photo, check the wrestlers in it, save. Tagged photos show a badge. Tags appear on the site immediately (profiles, gallery filter, lightbox).</p>
+        <div id="faw-pt-app"
+             data-ajax="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>"
+             data-nonce="<?php echo esc_attr( wp_create_nonce( 'faw_nonce' ) ); ?>"
+             data-baseurl="<?php echo esc_url( $base ); ?>"
+             data-events="<?php echo esc_attr( wp_json_encode( $events ) ); ?>"
+             data-tags="<?php echo esc_attr( wp_json_encode( $tags ) ); ?>"
+             data-roster="<?php echo esc_attr( wp_json_encode( $roster ) ); ?>"></div>
+    </div>
+    <style>
+        #faw-pt-wrap { font-family: -apple-system, system-ui, sans-serif; }
+        #faw-pt-app { display: flex; gap: 16px; align-items: flex-start; margin-top: 12px; }
+        #faw-pt-grid-wrap { flex: 1; min-width: 0; }
+        #faw-pt-filters { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; align-items: center; }
+        #faw-pt-filters button { padding: 6px 14px; border: 1px solid #2271b1; background: #fff; color: #2271b1; border-radius: 3px; cursor: pointer; }
+        #faw-pt-filters button.on { background: #2271b1; color: #fff; }
+        #faw-pt-search { min-width: 220px; }
+        #faw-pt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; max-height: 70vh; overflow-y: auto; border: 1px solid #ccd0d4; padding: 10px; background: #fff; }
+        .faw-pt-thumb { position: relative; border: 2px solid transparent; border-radius: 3px; overflow: hidden; cursor: pointer; background: #f0f0f1; aspect-ratio: 3/2; }
+        .faw-pt-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .faw-pt-thumb.sel { border-color: #2271b1; }
+        .faw-pt-badge { position: absolute; top: 3px; right: 3px; background: #d63638; color: #fff; font-size: 10px; font-weight: 700; border-radius: 8px; padding: 1px 6px; }
+        #faw-pt-side { width: 340px; position: sticky; top: 46px; background: #fff; border: 1px solid #ccd0d4; padding: 14px; border-radius: 3px; }
+        #faw-pt-side img { width: 100%; border-radius: 3px; margin-bottom: 8px; }
+        #faw-pt-side .base { font-family: monospace; color: #50575e; margin-bottom: 10px; }
+        #faw-pt-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 10px; max-height: 320px; overflow-y: auto; margin-bottom: 10px; }
+        #faw-pt-checks label { font-size: 12px; display: flex; gap: 5px; align-items: center; }
+        #faw-pt-status { margin-left: 8px; font-weight: 600; }
+        #faw-pt-empty { color: #50575e; padding: 20px 0; text-align: center; grid-column: 1 / -1; }
+    </style>
+    <script>
+    (function () {
+      var app = document.getElementById('faw-pt-app');
+      var events = JSON.parse(app.dataset.events || '{}');
+      var tags = JSON.parse(app.dataset.tags || '{}');
+      var roster = JSON.parse(app.dataset.roster || '{}');
+      var baseurl = app.dataset.baseurl;
+      var evFilter = 'all', q = '', selected = null;
+
+      function files() {
+        var out = [];
+        Object.keys(events).forEach(function (k) {
+          var ev = events[k];
+          ev.files.forEach(function (f) { out.push({ base: f, ev: k, dir: ev.dir }); });
+        });
+        return out;
+      }
+      function renderFilters() {
+        var f = document.getElementById('faw-pt-filters');
+        var html = '';
+        Object.keys(events).forEach(function (k) {
+          html += '<button data-ev="' + k + '" class="' + (evFilter === k ? 'on' : '') + '">' + events[k].label + '</button>';
+        });
+        html += '<button data-ev="all" class="' + (evFilter === 'all' ? 'on' : '') + '">All</button>';
+        html += '<input type="search" id="faw-pt-search" placeholder="Filter by photo ID (e.g. riv-042)" value="' + q + '">';
+        f.innerHTML = html;
+        f.querySelectorAll('button').forEach(function (b) {
+          b.addEventListener('click', function () { evFilter = b.dataset.ev; renderFilters(); renderGrid(); });
+        });
+        document.getElementById('faw-pt-search').addEventListener('input', function (e) { q = e.target.value.trim().toLowerCase(); renderGrid(); });
+      }
+      function renderGrid() {
+        var g = document.getElementById('faw-pt-grid');
+        var list = files().filter(function (p) {
+          if (evFilter !== 'all' && p.ev !== evFilter) return false;
+          if (q && p.base.indexOf(q) === -1) return false;
+          return true;
+        });
+        if (!list.length) { g.innerHTML = '<div id="faw-pt-empty">No photos match.</div>'; return; }
+        g.innerHTML = list.map(function (p) {
+          var n = (tags[p.base] || []).length;
+          return '<div class="faw-pt-thumb" data-base="' + p.base + '" data-dir="' + p.dir + '">' +
+            '<img loading="lazy" src="' + baseurl + p.dir + '/' + p.base + '-thumb.jpg" alt="' + p.base + '">' +
+            (n ? '<span class="faw-pt-badge">' + n + '</span>' : '') + '</div>';
+        }).join('');
+        if (selected) {
+          var el = g.querySelector('[data-base="' + selected + '"]');
+          if (el) el.classList.add('sel');
+        }
+      }
+      function renderSide() {
+        var side = document.getElementById('faw-pt-side');
+        if (!selected) {
+          side.innerHTML = '<p>Select a photo to tag it.</p>';
+          return;
+        }
+        var p = files().filter(function (x) { return x.base === selected; })[0];
+        var cur = tags[selected] || [];
+        var checks = Object.keys(roster).map(function (slug) {
+          return '<label><input type="checkbox" value="' + slug + '"' + (cur.indexOf(slug) !== -1 ? ' checked' : '') + '> ' + roster[slug].name + '</label>';
+        }).join('');
+        side.innerHTML =
+          '<img src="' + baseurl + p.dir + '/' + p.base + '-full.jpg" alt="">' +
+          '<div class="base">' + selected + ' · ' + events[p.ev].label + '</div>' +
+          '<div id="faw-pt-checks">' + checks + '</div>' +
+          '<button class="button button-primary" id="faw-pt-save">Save Tags</button>' +
+          '<span id="faw-pt-status"></span>';
+        document.getElementById('faw-pt-save').addEventListener('click', function () {
+          var slugs = Array.prototype.slice.call(document.querySelectorAll('#faw-pt-checks input:checked')).map(function (i) { return i.value; });
+          var fd = new FormData();
+          fd.append('action', 'faw_admin_save_tags');
+          fd.append('nonce', app.dataset.nonce);
+          fd.append('base', selected);
+          slugs.forEach(function (s) { fd.append('slugs[]', s); });
+          document.getElementById('faw-pt-status').textContent = 'Saving...';
+          fetch(app.dataset.ajax, { method: 'POST', body: fd, credentials: 'same-origin' })
+            .then(function (r) { return r.json(); })
+            .then(function (res) {
+              document.getElementById('faw-pt-status').textContent = res.success ? 'Saved.' : 'Error.';
+              if (res.success) {
+                if (slugs.length) tags[selected] = slugs; else delete tags[selected];
+                renderGrid();
+              }
+            })
+            .catch(function () { document.getElementById('faw-pt-status').textContent = 'Network error.'; });
+        });
+      }
+      document.addEventListener('click', function (e) {
+        var t = e.target.closest('.faw-pt-thumb');
+        if (!t) return;
+        selected = t.dataset.base;
+        document.querySelectorAll('.faw-pt-thumb').forEach(function (x) { x.classList.remove('sel'); });
+        t.classList.add('sel');
+        renderSide();
+      });
+      app.innerHTML =
+        '<div id="faw-pt-grid-wrap"><div id="faw-pt-filters"></div><div id="faw-pt-grid"></div></div>' +
+        '<div id="faw-pt-side"></div>';
+      renderFilters();
+      renderGrid();
+      renderSide();
+    })();
+    </script>
+    <?php
+}
+
+/**
+ * Helper: wrestler slug (stable URL key for profile pages)
+ */
+function faw_wrestler_slug( $name ) {
+    $s = strtolower( $name );
+    $s = str_replace( array( '&', '.' ), array( ' and ', ' ' ), $s );
+    $s = preg_replace( '/[^a-z0-9]+/', '-', $s );
+    $s = trim( $s, '-' );
+    return $s;
+}
+
+/**
+ * Helper: roster lookup by slug
+ */
+function faw_get_wrestler_by_slug( $slug ) {
+    $roster = faw_get_roster();
+    foreach ( $roster as $w ) {
+        if ( faw_wrestler_slug( $w['name'] ) === $slug ) {
+            return $w;
+        }
+    }
+    return null;
+}
+
+/**
+ * Helper: index roster by slug => array( name, slug )
+ */
+function faw_roster_index() {
+    $out = array();
+    foreach ( faw_get_roster() as $w ) {
+        $slug = faw_wrestler_slug( $w['name'] );
+        $out[ $slug ] = array(
+            'name' => $w['name'],
+            'slug' => $slug,
+        );
+    }
+    return $out;
 }
 
 /**

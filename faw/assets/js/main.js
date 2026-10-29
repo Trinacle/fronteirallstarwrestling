@@ -14,6 +14,10 @@
   function clamp(v, min, max) { return Math.min(Math.max(v, min), max); }
   function pad2(n) { return String(n).padStart(2, '0'); }
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ROSTER_URL = (window.FAW_DATA && window.FAW_DATA.rosterUrl) || '/roster/';
+  function wslug(name) {
+    return String(name).toLowerCase().replace(/&/g, ' and ').replace(/\./g, ' ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
 
   /* ============================================================
      1. DYNAMIC SCROLL-DARKENING BACKGROUND
@@ -275,6 +279,7 @@
       '<div class="modal__body" style="--wrestler-color:' + w.color + '">' +
         '<h3>' + escapeHtml(w.name) + '</h3>' +
         '<p class="modal__bio">' + escapeHtml(w.bio) + '</p>' +
+        '<a class="modal__profile-link btn btn--primary" href="' + ROSTER_URL + (w.slug || wslug(w.name)) + '/">View Profile &#8594;</a>' +
       '</div>';
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
@@ -332,6 +337,13 @@
   var lightboxCounter = $('lightboxCounter');
   var lbIndex = 0;
 
+  // Optional parallel metadata: window.FAW_LB_INFO[i] = { base, tags: [slug,...] }
+  var LB_INFO = window.FAW_LB_INFO || null;
+  var ROSTER_BY_SLUG = {};
+  ((window.FAW_DATA && window.FAW_DATA.roster) || []).forEach(function (r) {
+    ROSTER_BY_SLUG[r.slug || wslug(r.name)] = r;
+  });
+
   function openLightbox(i) {
     if (!GALLERY.length || !lightbox) return;
     lbIndex = i;
@@ -345,15 +357,83 @@
     if (lbIndex >= GALLERY.length) lbIndex = 0;
     lightboxImg.style.backgroundImage = 'url(' + GALLERY[lbIndex] + ')';
     if (lightboxCounter) lightboxCounter.textContent = (lbIndex + 1) + ' / ' + GALLERY.length;
+    updateLightboxMeta();
   }
   function closeLightbox() {
     if (!lightbox) return;
     lightbox.classList.remove('is-open');
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    closeShareMenu();
   }
 
-  // public API — gallery page (and future surfaces) can open/close the lightbox
+  // ---- share + tag metadata ----
+  function lbCurrentInfo() {
+    if (!LB_INFO || LB_INFO.length !== GALLERY.length) return null;
+    return LB_INFO[lbIndex] || null;
+  }
+  function lbPermalink() {
+    var url = new URL(location.href);
+    url.search = '';
+    url.hash = '';
+    var info = lbCurrentInfo();
+    if (info && info.base) url.searchParams.set('photo', info.base);
+    return url.toString();
+  }
+  function updateLightboxMeta() {
+    var tagsWrap = document.getElementById('lightboxTags');
+    if (!tagsWrap) return;
+    var info = lbCurrentInfo();
+    var tags = (info && info.tags) || [];
+    tagsWrap.innerHTML = tags.map(function (slug) {
+      var r = ROSTER_BY_SLUG[slug];
+      var nm = r ? r.name : slug;
+      return '<a href="' + ROSTER_URL + slug + '/" class="lightbox__tag">' + escapeHtml(nm) + '</a>';
+    }).join('');
+    tagsWrap.style.display = tags.length ? '' : 'none';
+  }
+
+  // ---- share button: native share on mobile, popover on desktop ----
+  var lbShare = $('lightboxShare');
+  var shareMenu = null;
+  function shareOutside(e) {
+    if (shareMenu && !shareMenu.contains(e.target) && e.target !== lbShare && !lbShare.contains(e.target)) closeShareMenu();
+  }
+  function closeShareMenu() {
+    if (shareMenu) { shareMenu.remove(); shareMenu = null; }
+    document.removeEventListener('click', shareOutside, true);
+  }
+  function openShareMenu() {
+    closeShareMenu();
+    var url = lbPermalink();
+    shareMenu = document.createElement('div');
+    shareMenu.className = 'lightbox__share-menu';
+    shareMenu.innerHTML =
+      '<a href="https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url) + '" target="_blank" rel="noopener" class="lightbox__share-opt">Facebook</a>' +
+      '<a href="https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '" target="_blank" rel="noopener" class="lightbox__share-opt">Share on X</a>' +
+      '<button type="button" class="lightbox__share-opt lightbox__share-copy">Copy Link</button>';
+    lbShare.closest('.lightbox__bar').appendChild(shareMenu);
+    shareMenu.querySelector('.lightbox__share-copy').addEventListener('click', function () {
+      var done = function () {
+        var b = shareMenu && shareMenu.querySelector('.lightbox__share-copy');
+        if (b) b.textContent = 'Copied!';
+        setTimeout(closeShareMenu, 900);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, done);
+      else done();
+    });
+    document.addEventListener('click', shareOutside, true);
+  }
+  if (lbShare) lbShare.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (navigator.share) {
+      navigator.share({ url: lbPermalink() }).catch(function () {});
+      return;
+    }
+    if (shareMenu) closeShareMenu(); else openShareMenu();
+  });
+
+  // public API: gallery page (and future surfaces) can open/close the lightbox
   window.FAW_LIGHTBOX = { open: openLightbox, close: closeLightbox };
 
   // wire up gallery thumbnails
@@ -395,6 +475,21 @@
       if (Math.abs(dx) > 50) { if (dx < 0) lbIndex++; else lbIndex--; showLightboxImage(); }
     }, { passive: true });
   }
+
+  // deep link: ?photo=riv-042 opens that photo (works with FAW_LB_INFO metadata)
+  (function () {
+    var q = new URLSearchParams(location.search).get('photo');
+    if (!q) return;
+    if (!LB_INFO || !lightbox) return;
+    var found = false;
+    for (var i = 0; i < LB_INFO.length; i++) {
+      if (LB_INFO[i] && LB_INFO[i].base === q) { openLightbox(i); found = true; break; }
+    }
+    // photo not in this page's set (e.g. gallery-only photo on the homepage): send to /gallery/
+    if (!found && !/\/gallery\/?$/.test(location.pathname)) {
+      location.replace(((window.FAW_DATA && window.FAW_DATA.siteUrl) || '/') + 'gallery/?photo=' + encodeURIComponent(q));
+    }
+  })();
 
   /* ---------- Match Card Lightbox ---------- */
   var MATCH_CARDS = window.FAW_MATCHES || [];
