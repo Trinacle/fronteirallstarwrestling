@@ -339,7 +339,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 /* Lightbox */
 .lightbox { position: fixed; inset: 0; z-index: 400; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.95); opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
 .lightbox.is-open { opacity: 1; visibility: visible; }
-.lightbox__img { width: 90vw; max-width: 980px; height: 82vh; background-size: contain; background-position: center; background-repeat: no-repeat; border-radius: var(--radius); box-shadow: 0 40px 120px -20px rgba(0,0,0,0.9), 0 0 0 1px var(--line-2); animation: lbIn 0.35s var(--ease); }
+.lightbox__img { width: 90vw; max-width: 980px; height: 82vh; border-radius: var(--radius); box-shadow: 0 40px 120px -20px rgba(0,0,0,0.9), 0 0 0 1px var(--line-2); animation: lbIn 0.35s var(--ease); }
+.lightbox__img img { width: 100%; height: 100%; object-fit: contain; display: block; border-radius: var(--radius); }
 @keyframes lbIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
 .lightbox__close { position: absolute; top: 20px; right: 24px; z-index: 5; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.1); color: #fff; font-size: 2rem; line-height: 1; display: grid; place-items: center; }
 .lightbox__close:hover { background: var(--crimson-bright); }

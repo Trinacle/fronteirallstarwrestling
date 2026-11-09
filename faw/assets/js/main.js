@@ -355,7 +355,21 @@
   function showLightboxImage() {
     if (lbIndex < 0) lbIndex = GALLERY.length - 1;
     if (lbIndex >= GALLERY.length) lbIndex = 0;
-    lightboxImg.style.backgroundImage = 'url(' + GALLERY[lbIndex] + ')';
+    // Real <img> (not a CSS background) so the browser context menu offers
+    // "Save image as" and "Copy image address" on the full-size photo.
+    if (lightboxImg) {
+      var img = lightboxImg.querySelector('img');
+      if (!img) {
+        img = document.createElement('img');
+        img.decoding = 'async';
+        lightboxImg.appendChild(img);
+      }
+      img.src = GALLERY[lbIndex];
+      var altInfo = lbCurrentInfo();
+      img.alt = altInfo && altInfo.tags && altInfo.tags.length
+        ? 'FAW event photo - ' + altInfo.tags.map(function (s) { var r = ROSTER_BY_SLUG[s]; return r ? r.name : s; }).join(', ')
+        : 'FAW event photo';
+    }
     if (lightboxCounter) lightboxCounter.textContent = (lbIndex + 1) + ' / ' + GALLERY.length;
     updateLightboxMeta();
   }
