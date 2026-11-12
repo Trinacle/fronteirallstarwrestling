@@ -229,7 +229,7 @@ get_header();
                 <span class="event-card__date">OCT 17 · 2026 · PAST EVENT</span>
                 <h3>Voodoo Nights</h3>
                 <p>The FAW Halloween Showdown hit the Covington Country Club. What a night.</p>
-                <div class="event-card__foot"><span class="event-card__price">Archive</span><a href="<?php echo esc_url( home_url( '/gallery/' ) ); ?>" class="btn btn--ghost btn--sm">View Photos →</a></div>
+                <div class="event-card__foot"><span class="event-card__price">Archive</span><a href="<?php echo esc_url( home_url( '/gallery/?event=voodoo' ) ); ?>" class="btn btn--ghost btn--sm">View Photos →</a></div>
             </div>
         </article>
         <article class="event-card">

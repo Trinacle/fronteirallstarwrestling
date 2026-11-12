@@ -118,7 +118,7 @@
   // deep links: /gallery/?event=rivor|crucible and ?photo=riv-042
   var params = new URLSearchParams(location.search);
   var q = params.get('event');
-  if (q === 'rivor' || q === 'crucible') {
+  if (q === 'rivor' || q === 'crucible' || q === 'voodoo') {
     state.event = q;
     var evBtn = document.querySelector('#gfEvent .chip[data-event="' + q + '"]');
     if (evBtn) {

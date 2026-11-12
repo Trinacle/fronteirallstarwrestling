@@ -61,12 +61,14 @@ get_header();
             <button class="chip is-active" data-event="all">All Events</button>
             <button class="chip" data-event="crucible">Crucible</button>
             <button class="chip" data-event="rivor">Revolution on the River</button>
+            <button class="chip" data-event="voodoo">Voodoo Nights</button>
         </div>
         <div class="gpage__fgroup" id="gfDate">
             <span class="gpage__flabel">DATE</span>
             <button class="chip is-active" data-date="all">All Dates</button>
             <button class="chip" data-date="2026-06-26">Jun 26, 2026</button>
             <button class="chip" data-date="2026-08-15">Aug 15, 2026</button>
+            <button class="chip" data-date="2026-10-17">Oct 17, 2026</button>
         </div>
         <div class="gpage__fgroup" id="gfSort">
             <span class="gpage__flabel">SORT</span>
